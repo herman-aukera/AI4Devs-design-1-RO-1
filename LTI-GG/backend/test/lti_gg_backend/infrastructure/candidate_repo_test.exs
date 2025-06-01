@@ -4,7 +4,10 @@ defmodule LtiGgBackend.Infrastructure.CandidateRepoTest do
   alias LtiGgBackend.Domain.Candidate
 
   setup do
-    {:ok, _} = start_supervised(CandidateRepo)
+    case Agent.start_link(fn -> %{} end, name: LtiGgBackend.Infrastructure.CandidateRepo) do
+      {:ok, _pid} -> :ok
+      {:error, {:already_started, _pid}} -> :ok
+    end
     CandidateRepo.reset()
     :ok
   end

@@ -11,6 +11,14 @@ defmodule LtiGGBackendWeb.Router do
     get "/candidates", CandidateController, :index
     post "/candidates", CandidateController, :create
     patch "/candidates/:id/status", CandidateController, :update_status
+
+    get "/jobs", JobController, :index
+    post "/jobs", JobController, :create
+    patch "/jobs/:id/status", JobController, :update_status
+
+    get "/applications", ApplicationController, :index
+    post "/applications", ApplicationController, :create
+    patch "/applications/:id/status", ApplicationController, :update_status
   end
 
   # Enable Swoosh mailbox preview in development
