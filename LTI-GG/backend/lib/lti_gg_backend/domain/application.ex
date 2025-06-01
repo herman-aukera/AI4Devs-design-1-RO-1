@@ -24,6 +24,9 @@ defmodule LtiGgBackend.Domain.Application do
     }
   end
 
+  @doc """
+  Change the status of an application.
+  """
   @spec change_status(t(), status()) :: t()
   def change_status(%__MODULE__{} = app, status), do: %__MODULE__{app | status: status}
 end
