@@ -21,4 +21,10 @@ defmodule LtiGgBackend.Domain.Job do
 
   @spec close(t()) :: t()
   def close(%__MODULE__{} = job), do: %__MODULE__{job | status: :closed}
+
+  @doc """
+  Change the status of a job.
+  """
+  @spec change_status(t(), status()) :: t()
+  def change_status(%__MODULE__{} = job, status), do: %__MODULE__{job | status: status}
 end

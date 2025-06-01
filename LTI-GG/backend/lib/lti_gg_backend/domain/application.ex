@@ -16,7 +16,12 @@ defmodule LtiGgBackend.Domain.Application do
 
   @spec new(id(), candidate_id(), job_id()) :: t()
   def new(id, candidate_id, job_id) do
-    %__MODULE__{id: id, candidate_id: candidate_id, job_id: job_id, status: :submitted}
+    %__MODULE__{
+      id: id,
+      candidate_id: candidate_id,
+      job_id: job_id,
+      status: :submitted
+    }
   end
 
   @spec change_status(t(), status()) :: t()
