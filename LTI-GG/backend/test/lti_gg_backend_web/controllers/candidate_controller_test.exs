@@ -3,7 +3,11 @@ defmodule LtiGGBackendWeb.CandidateControllerTest do
   alias LtiGgBackend.Infrastructure.CandidateRepo
 
   setup do
-    {:ok, _} = start_supervised(CandidateRepo)
+    case start_supervised(CandidateRepo) do
+      {:ok, _} -> :ok
+      {:error, {:already_started, _}} -> :ok
+    end
+
     CandidateRepo.reset()
     :ok
   end
@@ -16,14 +20,22 @@ defmodule LtiGGBackendWeb.CandidateControllerTest do
   test "POST /api/candidates creates a candidate", %{conn: conn} do
     params = %{id: "10", name: "Test User", email: "test@example.com"}
     conn = post(conn, "/api/candidates", params)
-    assert %{"id" => "10", "name" => "Test User", "email" => "test@example.com", "status" => "applied"} = json_response(conn, 201)
+
+    assert %{
+             "id" => "10",
+             "name" => "Test User",
+             "email" => "test@example.com",
+             "status" => "applied"
+           } = json_response(conn, 201)
   end
 
   test "PATCH /api/candidates/:id/status updates status", %{conn: conn} do
     params = %{id: "11", name: "Status User", email: "status@example.com"}
     post(conn, "/api/candidates", params)
     conn2 = patch(conn, "/api/candidates/11/status", %{id: "11", status: "hired"})
-    assert %{"id" => "11", "status" => "hired"} = Map.take(json_response(conn2, 200), ["id", "status"])
+
+    assert %{"id" => "11", "status" => "hired"} =
+             Map.take(json_response(conn2, 200), ["id", "status"])
   end
 
   test "PATCH /api/candidates/:id/status returns 404 for missing candidate", %{conn: conn} do

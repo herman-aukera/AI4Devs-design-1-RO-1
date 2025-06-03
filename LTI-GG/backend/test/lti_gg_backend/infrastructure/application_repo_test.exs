@@ -4,7 +4,11 @@ defmodule LtiGgBackend.Infrastructure.ApplicationRepoTest do
   alias LtiGgBackend.Domain.Application
 
   setup do
-    {:ok, _} = start_supervised(ApplicationRepo)
+    case start_supervised(ApplicationRepo) do
+      {:ok, _} -> :ok
+      {:error, {:already_started, _}} -> :ok
+    end
+
     ApplicationRepo.reset()
     :ok
   end

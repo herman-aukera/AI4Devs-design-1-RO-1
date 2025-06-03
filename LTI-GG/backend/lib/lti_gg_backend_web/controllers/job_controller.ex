@@ -27,6 +27,21 @@ defmodule LtiGGBackendWeb.JobController do
     end
   end
 
+  def delete(conn, %{"id" => id}) do
+    case JobRepo.get(id) do
+      nil ->
+        send_resp(conn, 404, "Not found")
+
+      _job ->
+        :ok = JobRepo.delete(id)
+        send_resp(conn, 204, "")
+    end
+  end
+
+  def options(conn, _params) do
+    send_resp(conn, 200, "")
+  end
+
   defp job_to_map(%Job{id: id, title: title, description: description, status: status}) do
     %{id: id, title: title, description: description, status: status}
   end

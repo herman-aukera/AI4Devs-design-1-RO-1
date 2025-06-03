@@ -4,6 +4,11 @@ defmodule LtiGGBackendWeb.ApplicationControllerTest do
   alias LtiGgBackend.Domain.Application
 
   setup do
+    case start_supervised(ApplicationRepo) do
+      {:ok, _} -> :ok
+      {:error, {:already_started, _}} -> :ok
+    end
+
     ApplicationRepo.reset()
     :ok
   end
@@ -12,18 +17,43 @@ defmodule LtiGGBackendWeb.ApplicationControllerTest do
     app = Application.new("a1", "cand1", "job1")
     :ok = ApplicationRepo.put(app)
     conn = get(conn, "/api/applications")
-    assert json_response(conn, 200) == [%{"id" => "a1", "candidate_id" => "cand1", "job_id" => "job1", "status" => "submitted"}]
+
+    assert json_response(conn, 200) == [
+             %{
+               "id" => "a1",
+               "candidate_id" => "cand1",
+               "job_id" => "job1",
+               "status" => "submitted"
+             }
+           ]
   end
 
   test "POST /api/applications creates an application", %{conn: conn} do
     conn = post(conn, "/api/applications", %{id: "a2", candidate_id: "cand2", job_id: "job2"})
-    assert %{"id" => "a2", "candidate_id" => "cand2", "job_id" => "job2", "status" => "submitted"} = json_response(conn, 200)
+
+    assert %{"id" => "a2", "candidate_id" => "cand2", "job_id" => "job2", "status" => "submitted"} =
+             json_response(conn, 200)
   end
 
   test "PATCH /api/applications/:id/status updates application status", %{conn: conn} do
     app = Application.new("a3", "cand3", "job3")
     :ok = ApplicationRepo.put(app)
     conn = patch(conn, "/api/applications/a3/status", %{status: "reviewed"})
-    assert %{"id" => "a3", "status" => "reviewed"} = Map.take(json_response(conn, 200), ["id", "status"])
+
+    assert %{"id" => "a3", "status" => "reviewed"} =
+             Map.take(json_response(conn, 200), ["id", "status"])
+  end
+
+  test "DELETE /api/applications/:id deletes an application", %{conn: conn} do
+    app = Application.new("a4", "cand4", "job4")
+    :ok = ApplicationRepo.put(app)
+    conn = delete(conn, "/api/applications/a4")
+    assert response(conn, 204) == ""
+    assert ApplicationRepo.get("a4") == nil
+  end
+
+  test "DELETE /api/applications/:id returns 404 if not found", %{conn: conn} do
+    conn = delete(conn, "/api/applications/doesnotexist")
+    assert response(conn, 404) == "Not found"
   end
 end

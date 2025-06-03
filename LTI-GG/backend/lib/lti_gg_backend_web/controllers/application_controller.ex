@@ -27,7 +27,27 @@ defmodule LtiGGBackendWeb.ApplicationController do
     end
   end
 
-  defp app_to_map(%Application{id: id, candidate_id: candidate_id, job_id: job_id, status: status}) do
+  def delete(conn, %{"id" => id}) do
+    case LtiGgBackend.Infrastructure.ApplicationRepo.get(id) do
+      nil ->
+        send_resp(conn, 404, "Not found")
+
+      _app ->
+        :ok = LtiGgBackend.Infrastructure.ApplicationRepo.delete(id)
+        send_resp(conn, 204, "")
+    end
+  end
+
+  def options(conn, _params) do
+    send_resp(conn, 200, "")
+  end
+
+  defp app_to_map(%Application{
+         id: id,
+         candidate_id: candidate_id,
+         job_id: job_id,
+         status: status
+       }) do
     %{id: id, candidate_id: candidate_id, job_id: job_id, status: status}
   end
 

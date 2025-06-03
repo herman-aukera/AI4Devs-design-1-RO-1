@@ -4,7 +4,11 @@ defmodule LtiGgBackend.Infrastructure.JobRepoTest do
   alias LtiGgBackend.Domain.Job
 
   setup do
-    {:ok, _} = start_supervised(JobRepo)
+    case start_supervised(JobRepo) do
+      {:ok, _} -> :ok
+      {:error, {:already_started, _}} -> :ok
+    end
+
     JobRepo.reset()
     :ok
   end

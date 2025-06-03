@@ -10,6 +10,11 @@ defmodule LtiGGBackendWeb.CandidateController do
   Follows Clean Architecture: delegates to Application and Infrastructure layers.
   """
 
+  # OPTIONS /api/candidates (for CORS preflight)
+  def options(conn, _params) do
+    send_resp(conn, 200, "")
+  end
+
   # GET /api/candidates
   def index(conn, _params) do
     candidates = CandidateRepo.all()
@@ -20,6 +25,7 @@ defmodule LtiGGBackendWeb.CandidateController do
   def create(conn, %{"id" => id, "name" => name, "email" => email}) do
     candidate = CandidateApp.create_candidate(id, name, email)
     :ok = CandidateRepo.put(candidate)
+
     conn
     |> put_status(:created)
     |> json(candidate_to_map(candidate))

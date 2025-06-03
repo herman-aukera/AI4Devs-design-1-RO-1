@@ -8,7 +8,14 @@
 4. [Data Model](#data-model)
 5. [High-Level Architecture](#high-level-architecture)
 6. [C4 Diagram](#c4-diagram)
-7. [Setup & Running](#setup--running)
+7. [Getting Started](#getting-started)
+
+## 📚 Additional Documentation
+
+- **[RUN.md](./RUN.md)** - Quick start guide (2-minute setup)
+- **[TESTING.md](./TESTING.md)** - Comprehensive testing documentation
+- **[COMPLIANCE.md](./COMPLIANCE.md)** - Requirements fulfillment verification
+- **[prompts.md](./prompts.md)** - AI prompts used in development
 
 ---
 
@@ -41,6 +48,30 @@ LTI (Leading Talent Intelligence) is a next-generation Applicant Tracking System
 - **Interview Scheduling**: Intelligent calendar integration with conflict resolution
 - **Collaborative Evaluation**: Multi-reviewer scorecards with consensus tracking
 - **Analytics Dashboard**: Real-time metrics on hiring performance and bottlenecks
+
+---
+
+## 🚦 MVP Scope & Limitations
+
+This MVP implements a minimal, bootable Applicant Tracking System with the following characteristics:
+
+- **Implemented Entities:** Candidate, Job, Application
+- **Not Implemented:** User management, Interview, Evaluation, advanced AI, real email/calendar integrations
+- **Persistence:** In-memory only (no external DB)
+- **Authentication:** Dummy login (admin/admin123), no real user roles
+- **Frontend:** Elm SPA with job and application listing, basic forms, and error handling
+- **Backend:** Elixir/Phoenix API with CRUD for Candidate, Job, Application
+- **Testing:** ≥80% coverage, TDD for all layers
+- **Diagrams & Docs:** All diagrams and documentation reflect MVP scope
+
+### Limitations
+
+- No real AI scoring, email, or calendar integration (placeholders only)
+- No real-time WebSocket updates (HTTP only)
+- No user registration or password management
+- No Interview/Evaluation flows
+- No persistent storage (data lost on restart)
+- Minimal UI/UX polish (basic layout, no advanced styling)
 
 ---
 
@@ -206,423 +237,162 @@ graph TD
 
 ---
 
-## 🗄️ Data Model
+## 🗄️ Data Model (MVP)
 
-### Core Entities
+**Implemented:**
 
-#### User
+- Candidate
+- JobPosition (as Job)
+- Application
 
-```
-User {
-  id: UUID (Primary Key)
-  email: String (Unique, Not Null)
-  password_hash: String (Not Null)
-  first_name: String (Not Null)
-  last_name: String (Not Null)
-  role: Enum[admin, recruiter, hiring_manager, interviewer]
-  is_active: Boolean (Default: true)
-  created_at: DateTime
-  updated_at: DateTime
-}
-```
+**Not Implemented:**
 
-#### JobPosition
+- User
+- Interview
+- Evaluation
 
-```
-JobPosition {
-  id: UUID (Primary Key)
-  title: String (Not Null)
-  description: Text
-  requirements: Text
-  department: String
-  location: String
-  employment_type: Enum[full_time, part_time, contract, internship]
-  salary_min: Integer
-  salary_max: Integer
-  is_active: Boolean (Default: true)
-  created_by: UUID (Foreign Key -> User.id)
-  created_at: DateTime
-  updated_at: DateTime
-}
-```
-
-#### Candidate
-
-```
-Candidate {
-  id: UUID (Primary Key)
-  email: String (Unique, Not Null)
-  first_name: String (Not Null)
-  last_name: String (Not Null)
-  phone: String
-  linkedin_url: String
-  resume_url: String
-  cover_letter: Text
-  source: Enum[website, linkedin, referral, agency]
-  created_at: DateTime
-  updated_at: DateTime
-}
-```
-
-#### Application
-
-```
-Application {
-  id: UUID (Primary Key)
-  candidate_id: UUID (Foreign Key -> Candidate.id)
-  job_position_id: UUID (Foreign Key -> JobPosition.id)
-  status: Enum[applied, screening, interview, evaluation, offer, hired, rejected]
-  current_stage: String
-  applied_at: DateTime
-  last_activity_at: DateTime
-  ai_score: Float (0.0-1.0)
-  created_at: DateTime
-  updated_at: DateTime
-}
-```
-
-#### Interview
-
-```
-Interview {
-  id: UUID (Primary Key)
-  application_id: UUID (Foreign Key -> Application.id)
-  interviewer_id: UUID (Foreign Key -> User.id)
-  scheduled_at: DateTime
-  duration_minutes: Integer
-  type: Enum[phone, video, onsite, technical]
-  status: Enum[scheduled, completed, cancelled, no_show]
-  notes: Text
-  rating: Integer (1-5)
-  created_at: DateTime
-  updated_at: DateTime
-}
-```
-
-#### Evaluation
-
-```
-Evaluation {
-  id: UUID (Primary Key)
-  application_id: UUID (Foreign Key -> Application.id)
-  evaluator_id: UUID (Foreign Key -> User.id)
-  technical_score: Integer (1-10)
-  communication_score: Integer (1-10)
-  culture_fit_score: Integer (1-10)
-  overall_rating: Enum[strong_hire, hire, no_hire, strong_no_hire]
-  comments: Text
-  created_at: DateTime
-  updated_at: DateTime
-}
-```
-
-### Relationships
-
-```
-User ||--o{ JobPosition : creates
-User ||--o{ Interview : conducts
-User ||--o{ Evaluation : submits
-
-JobPosition ||--o{ Application : receives
-
-Candidate ||--o{ Application : submits
-
-Application ||--|| Candidate : belongs_to
-Application ||--|| JobPosition : applies_for
-Application ||--o{ Interview : has
-Application ||--o{ Evaluation : receives
-
-Interview ||--|| Application : evaluates
-Interview ||--|| User : conducted_by
-
-Evaluation ||--|| Application : evaluates
-Evaluation ||--|| User : submitted_by
-```
+Update diagrams and entity lists to reflect only implemented entities.
 
 ---
 
-## 🏗️ High-Level Architecture
+## 🏗️ High-Level Architecture (MVP)
 
-### Architecture Overview
-
-The LTI ATS follows **Clean Architecture** principles with **Domain-Driven Design (DDD)** and is built using functional programming paradigms.
-
-### Layers
-
-#### 1. Domain Layer (Core Business Logic)
-
-- **Entities**: Core business objects (Candidate, Application, JobPosition)
-- **Value Objects**: Immutable objects representing concepts (Email, Score, Status)
-- **Domain Services**: Pure business logic functions
-- **Repository Interfaces**: Contracts for data persistence
-
-#### 2. Application Layer (Use Cases)
-
-- **Use Cases**: Orchestrate domain logic for specific business scenarios
-- **Command/Query Handlers**: Process incoming requests
-- **Application Services**: Coordinate between domain and infrastructure
-
-#### 3. Infrastructure Layer (External Concerns)
-
-- **Repository Implementations**: In-memory data storage using ETS/Mnesia
-- **External Services**: Email, AI scoring, calendar integration
-- **Persistence**: Data serialization and storage
-
-#### 4. Web Layer (Interface)
-
-- **Phoenix Controllers**: HTTP API endpoints
-- **WebSocket Handlers**: Real-time communication
-- **Elm Frontend**: Pure functional UI with The Elm Architecture
-
-### Technology Stack
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    PRESENTATION LAYER                      │
-│  Elm Frontend (The Elm Architecture + elm-css)            │
-│  • Model-View-Update pattern                              │
-│  • Type-safe HTTP requests                                │
-│  • Real-time updates via WebSockets                       │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              │ HTTP/WebSocket
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                       WEB LAYER                            │
-│  Phoenix Framework (Elixir)                               │
-│  • RESTful API endpoints                                  │
-│  • WebSocket channels                                     │
-│  • Request/Response transformation                        │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   APPLICATION LAYER                        │
-│  • Use Case implementations                               │
-│  • Command/Query handlers                                 │
-│  • Business workflow orchestration                       │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     DOMAIN LAYER                           │
-│  • Core business entities                                 │
-│  • Domain services                                       │
-│  • Business rules and validation                         │
-│  • Repository contracts                                  │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                 INFRASTRUCTURE LAYER                       │
-│  • In-memory repositories (ETS/Mnesia)                   │
-│  • External service adapters                             │
-│  • Configuration management                              │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### System Architecture Diagram
-
-```
-                    ┌─────────────────┐
-                    │   Elm Frontend  │
-                    │   (Browser)     │
-                    └─────────┬───────┘
-                              │ HTTP/WS
-                              ▼
-                    ┌─────────────────┐
-                    │ Phoenix Gateway │
-                    │   (API Layer)   │
-                    └─────────┬───────┘
-                              │
-              ┌───────────────┼───────────────┐
-              ▼               ▼               ▼
-    ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-    │ Candidate   │ │ Application │ │ User        │
-    │ Context     │ │ Context     │ │ Context     │
-    └─────────────┘ └─────────────┘ └─────────────┘
-              │               │               │
-              └───────────────┼───────────────┘
-                              ▼
-                    ┌─────────────────┐
-                    │  In-Memory DB   │
-                    │  (ETS/Mnesia)   │
-                    └─────────────────┘
-```
+- **Frontend:** Elm SPA (job/application CRUD, login)
+- **Backend:** Phoenix API (CRUD for Candidate, Job, Application)
+- **Persistence:** In-memory (Agent/ETS)
+- **No real-time, no external integrations**
 
 ---
 
-## 🔍 C4 Diagram - Candidate Pipeline Component
+## 🔍 C4 Diagram (MVP)
 
-### Context Diagram (Level 1)
-
-```
-                    ┌─────────────────┐
-                    │   Recruiters    │
-                    │   (Person)      │
-                    └─────────┬───────┘
-                              │
-                              ▼
-                    ┌─────────────────┐      ┌─────────────────┐
-                    │   LTI ATS       │◄────►│   Job Boards    │
-                    │   (System)      │      │   (System)      │
-                    └─────────┬───────┘      └─────────────────┘
-                              │
-                              ▼
-                    ┌─────────────────┐
-                    │   Candidates    │
-                    │   (Person)      │
-                    └─────────────────┘
-```
-
-### Container Diagram (Level 2)
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        LTI ATS System                          │
-│                                                                 │
-│  ┌─────────────────┐    ┌─────────────────┐                   │
-│  │   Elm Frontend  │◄──►│ Phoenix Backend │                   │
-│  │   (Container)   │    │   (Container)   │                   │
-│  └─────────────────┘    └─────────┬───────┘                   │
-│                                   │                           │
-│                                   ▼                           │
-│                         ┌─────────────────┐                   │
-│                         │  In-Memory DB   │                   │
-│                         │   (Container)   │                   │
-│                         └─────────────────┘                   │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Frontend (Elm SPA)
+        FE1[Login Page]
+        FE2[Job List]
+        FE3[Application List]
+    end
+    subgraph Backend (Phoenix API)
+        BE1[Candidate Controller]
+        BE2[Job Controller]
+        BE3[Application Controller]
+        BE4[In-memory Repos (Agent)]
+        BE5[Domain Logic]
+    end
+    FE1 -- login/logout --> BE1
+    FE2 -- fetch jobs --> BE2
+    FE3 -- fetch applications --> BE3
+    BE1 -- CRUD --> BE4
+    BE2 -- CRUD --> BE4
+    BE3 -- CRUD --> BE4
+    BE4 -- domain ops --> BE5
 ```
 
-### Component Diagram (Level 3) - Pipeline Management
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                 Phoenix Backend Container                       │
-│                                                                 │
-│  ┌─────────────────┐    ┌─────────────────┐                   │
-│  │  Web Controllers│◄──►│ Pipeline Context│                   │
-│  │   (Component)   │    │   (Component)   │                   │
-│  └─────────────────┘    └─────────┬───────┘                   │
-│                                   │                           │
-│                                   ▼                           │
-│                         ┌─────────────────┐                   │
-│                         │ Application     │                   │
-│                         │ Use Cases       │                   │
-│                         │ (Component)     │                   │
-│                         └─────────┬───────┘                   │
-│                                   │                           │
-│                                   ▼                           │
-│                         ┌─────────────────┐                   │
-│                         │ Domain Entities │                   │
-│                         │ (Component)     │                   │
-│                         └─────────┬───────┘                   │
-│                                   │                           │
-│                                   ▼                           │
-│                         ┌─────────────────┐                   │
-│                         │ Repository      │                   │
-│                         │ (Component)     │                   │
-│                         └─────────────────┘                   │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Code Diagram (Level 4) - Pipeline Domain Model
-
-```elixir
-defmodule LTI.Pipeline.Domain.Application do
-  @type t :: %__MODULE__{
-    id: UUID.t(),
-    candidate: Candidate.t(),
-    job_position: JobPosition.t(),
-    status: status(),
-    stage: String.t(),
-    ai_score: float(),
-    created_at: DateTime.t()
-  }
-
-  @type status :: :applied | :screening | :interview | :evaluation | :offer | :hired | :rejected
-
-  defstruct [:id, :candidate, :job_position, :status, :stage, :ai_score, :created_at]
-
-  @spec move_to_stage(t(), String.t()) :: {:ok, t()} | {:error, atom()}
-  def move_to_stage(%__MODULE__{} = application, new_stage) do
-    # Domain logic for stage transitions
-  end
-
-  @spec calculate_score(t()) :: {:ok, t()} | {:error, atom()}
-  def calculate_score(%__MODULE__{} = application) do
-    # AI scoring logic
-  end
-end
-```
+- **No Interview/Evaluation/User contexts in MVP**
+- **No external DB or integrations**
+- **All flows pass through all Clean Architecture layers**
 
 ---
 
-## 🚀 Setup & Running
+## 🏛️ Clean Architecture & DDD (MVP)
 
-### Prerequisites
+The system is structured according to Clean Architecture and Domain-Driven Design (DDD) principles:
 
-- Elixir 1.15+ and Erlang/OTP 26+
-- Node.js 18+ (for Elm compilation)
-- Make
+```mermaid
+flowchart TD
+    UI[Elm SPA (UI)]
+    Web[Phoenix Web Layer (Controllers, Router)]
+    App[Application Layer (Use Cases)]
+    Domain[Domain Layer (Entities, Business Rules)]
+    Infra[Infrastructure Layer (In-memory Repos)]
+    UI -- HTTP/JSON --> Web
+    Web -- Calls Use Cases --> App
+    App -- Operates on --> Domain
+    App -- Uses --> Infra
+    Infra -- Persists/Fetches --> Domain
+```
+
+- **Domain Layer**: Pure business logic, no dependencies (see `backend/lib/lti_gg_backend/domain/`)
+- **Application Layer**: Use cases, orchestration (see `backend/lib/lti_gg_backend/application/`)
+- **Infrastructure Layer**: In-memory repositories (see `backend/lib/lti_gg_backend/infrastructure/`)
+- **Web Layer**: Phoenix controllers/routes (see `backend/lib/lti_gg_backend_web/`)
+- **Frontend**: Elm SPA (see `frontend/src/`)
+
+---
+
+## 🗂️ Backend Structure & API
+
+- **Domain Entities**: `Candidate`, `Job`, `Application`
+  - Files: `domain/candidate.ex`, `domain/job.ex`, `domain/application.ex`
+- **Use Cases**: Application logic for each entity
+  - Files: `application/candidate_app.ex`, `application/job_app.ex`, `application/application_app.ex`
+- **Repositories**: In-memory, Agent-based
+  - Files: `infrastructure/candidate_repo.ex`, `infrastructure/job_repo.ex`, `infrastructure/application_repo.ex`
+- **Web Layer**: Phoenix controllers and router
+  - Files: `lti_gg_backend_web/controllers/`, `lti_gg_backend_web/router.ex`
+- **API Endpoints** (all under `/api`):
+  - `GET /jobs`, `POST /jobs`, `PATCH /jobs/:id/status`
+  - `GET /applications`, `POST /applications`, `PATCH /applications/:id/status`
+  - `GET /candidates`, `POST /candidates`, `PATCH /candidates/:id/status`
+
+---
+
+## 🖥️ Frontend Structure (Elm)
+
+- **Main SPA**: `frontend/src/Main.elm`
+  - Handles login, job/application listing, error handling
+- **Application Form**: `frontend/src/Application.elm`
+  - Handles application submission logic
+- **Styling**: `frontend/src/Styles.elm` (using `elm-css`)
+- **Tests**: `frontend/tests/` (TDD for all features)
+
+---
+
+## 🧪 TDD & Test Coverage
+
+- **Backend**: All layers (domain, application, infrastructure, web) are fully tested (see `backend/test/`)
+  - Tests for entity logic, use cases, repo behavior, and API endpoints
+- **Frontend**: Elm tests for all fetch/update logic and UI flows (see `frontend/tests/`)
+- **Coverage**: ≥80% for all implemented code (see `backend/cover/` for HTML reports)
+
+---
+
+## ⚡ Developer Experience (DX)
+
+- **Makefile**: Unified commands for setup, run, test, format, reset-db, build, and check
+- **Zero-config onboarding**: `make setup` installs all dependencies
+- **Fast feedback**: In-memory DB, instant test runs, no external services required
+- **Formatting**: Enforced for both Elixir and Elm
+- **Comprehensive Documentation**: Architecture, setup, testing, and compliance guides
+
+---
+
+## 🚀 Getting Started
+
+This system is designed for immediate execution with minimal setup.
 
 ### Quick Start
 
-```bash
-# Clone and setup
-git clone <repository>
-cd LTI-GG
-make setup
+See **[RUN.md](./RUN.md)** for the fastest way to get the system running (under 2 minutes).
 
-# Run the application
-make run
+### Testing Guide
 
-# Run tests
-make test
+See **[TESTING.md](./TESTING.md)** for comprehensive testing documentation including unit tests, integration tests, and manual testing scenarios.
 
-# Format code
-make format
-```
+### Requirements Compliance
 
-### Available Commands
-
-| Command         | Description                                   |
-| --------------- | --------------------------------------------- |
-| `make setup`    | Install all dependencies (Elixir, Elm, npm)   |
-| `make run`      | Start both frontend and backend servers       |
-| `make test`     | Run all tests with coverage                   |
-| `make format`   | Format Elixir and Elm code                    |
-| `make reset-db` | Reset in-memory database                      |
-| `make build`    | Build production assets                       |
-| `make check`    | Run all quality checks (tests, format, credo) |
-
-### Development Workflow
-
-1. **Start with tests**: Write failing tests first (TDD)
-2. **Implement domain logic**: Pure functions in domain layer
-3. **Add application logic**: Use cases and orchestration
-4. **Build infrastructure**: Repository implementations
-5. **Create web layer**: Controllers and API endpoints
-6. **Update frontend**: Elm components and interactions
-
-### Authentication
-
-For MVP purposes, use dummy credentials:
-
-- **Username**: `admin`
-- **Password**: `admin123`
-
-The system stores authentication state in browser localStorage.
+See **[COMPLIANCE.md](./COMPLIANCE.md)** for verification that this project meets 100% of the academic requirements plus delivers a working MVP.
 
 ---
 
-## 📊 Quality Metrics
+## 📊 Quality Metrics (MVP)
 
-- **Test Coverage**: ≥80% for all layers
-- **Type Safety**: 100% (Elm + Elixir specs)
-- **Performance**: <200ms API response time
-- **Reliability**: Zero runtime exceptions
-- **Maintainability**: Clean Architecture compliance
+- **Test Coverage:** ≥80% for implemented layers
+- **Type Safety:** Elm + Elixir specs for implemented modules
+- **Performance:** <200ms API response time (in-memory)
+- **Reliability:** Zero runtime exceptions in tested flows
+- **Maintainability:** Clean Architecture for implemented features
 
 ---
 

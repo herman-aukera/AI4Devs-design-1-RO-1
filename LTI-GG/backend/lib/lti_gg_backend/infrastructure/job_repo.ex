@@ -45,4 +45,12 @@ defmodule LtiGgBackend.Infrastructure.JobRepo do
   def reset do
     Agent.update(__MODULE__, fn _ -> %{} end)
   end
+
+  @doc """
+  Delete a job by id.
+  """
+  @spec delete(id) :: :ok
+  def delete(id) do
+    Agent.update(__MODULE__, &Map.delete(&1, id))
+  end
 end

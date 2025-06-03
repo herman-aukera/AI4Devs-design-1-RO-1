@@ -13,6 +13,10 @@ defmodule LtiGGBackend.Application do
       {Phoenix.PubSub, name: LtiGGBackend.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: LtiGGBackend.Finch},
+      # Start repository processes
+      LtiGgBackend.Infrastructure.JobRepo,
+      LtiGgBackend.Infrastructure.ApplicationRepo,
+      LtiGgBackend.Infrastructure.CandidateRepo,
       # Start a worker by calling: LtiGGBackend.Worker.start_link(arg)
       # {LtiGGBackend.Worker, arg},
       # Start to serve requests, typically the last entry

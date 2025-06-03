@@ -19,28 +19,44 @@ defmodule LtiGGBackendWeb.Endpoint do
   #
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
-  plug Plug.Static,
+  plug(Plug.Static,
     at: "/",
     from: :lti_gg_backend,
     gzip: false,
     only: LtiGGBackendWeb.static_paths()
+  )
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
-    plug Phoenix.CodeReloader
+    plug(Phoenix.CodeReloader)
   end
 
-  plug Plug.RequestId
-  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
+  plug(Plug.RequestId)
+  plug(Plug.Telemetry, event_prefix: [:phoenix, :endpoint])
 
-  plug Plug.Parsers,
+  # Simple CORS headers for frontend-backend communication
+  plug(:cors)
+
+  plug(Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
+  )
 
-  plug Plug.MethodOverride
-  plug Plug.Head
-  plug Plug.Session, @session_options
-  plug LtiGGBackendWeb.Router
+  plug(Plug.MethodOverride)
+  plug(Plug.Head)
+  plug(Plug.Session, @session_options)
+  plug(LtiGGBackendWeb.Router)
+
+  # Simple CORS function to allow cross-origin requests
+  defp cors(conn, _opts) do
+    conn
+    |> Plug.Conn.put_resp_header("access-control-allow-origin", "*")
+    |> Plug.Conn.put_resp_header(
+      "access-control-allow-methods",
+      "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    )
+    |> Plug.Conn.put_resp_header("access-control-allow-headers", "content-type, authorization")
+  end
 end
