@@ -1,243 +1,390 @@
-# LTI ATS MVP - Prompts Documentation
+# LTI-GG Design Exercise - AI Prompts Documentation
 
-This document contains all the prompts used to generate the LTI ATS MVP system using AI assistants.
+Este documento contiene todos los prompts utilizados para generar el diseño del sistema LTI-GG como ejercicio académico utilizando asistentes de IA.
 
-> 📅 **Last Updated**: June 3, 2025  
-> 🎯 **Status**: MVP Completed Successfully - All requirements fulfilled
+> 📅 **Última Actualización**: 3 de Junio, 2025  
+> 🎯 **Estado**: Ejercicio de Diseño Completado - Documento de diseño entregado  
+> 🎓 **Tipo**: Ejercicio Académico - Solo Documentación de Diseño
 
 ---
 
-## 🤖 Main System Generation Prompt
+## 🎯 Objetivo del Ejercicio
 
-### Initial Architecture & Documentation Prompt
+Este ejercicio académico tenía como objetivo crear **únicamente documentación de diseño** para un sistema ATS (Applicant Tracking System), **no una implementación completa**. Los entregables requeridos eran:
+
+1. **LTI-GG.md**: Documento de diseño completo con todos los artefactos de diseño
+2. **prompts.md**: Este documento con los prompts utilizados
+
+## 📝 Prompt Principal para Diseño del Sistema
+
+### Prompt Inicial para Documentación de Diseño
+
+```
+Actúa como un **arquitecto de software senior** y **diseñador de sistemas**. Tu trabajo es crear la documentación de diseño completa para un sistema ATS (Applicant Tracking System) llamado **LTI-GG** para una startup tecnológica.
+
+## 🎯 Objetivo
+
+Crear documentación de diseño de alto nivel que incluya:
+
+1. 📄 **Descripción del sistema** con valor añadido y ventajas competitivas
+2. 🧠 **Lean Canvas** para modelar el negocio
+3. ✅ **3 casos de uso principales** con descripciones detalladas y diagramas
+4. 🧱 **Modelo de datos** con entidades, atributos (nombre y tipo) y relaciones
+5. 🏛️ **Diseño de alto nivel** con explicación y diagrama de arquitectura
+6. 🔍 **Diagrama C4** que profundice en un componente del sistema
+
+## 📋 Especificaciones del Sistema
+
+**LTI-GG** debe ser conceptualizado como una plataforma de próxima generación que:
+- Integre **inteligencia artificial** para evaluación predictiva
+- Ofrezca **automatización inteligente** de procesos
+- Proporcione **experiencia superior** tanto para candidatos como reclutadores
+- Incluya **analytics avanzados** y recomendaciones
+- Promueva **diversidad e inclusión** en el proceso de contratación
+
+## 🏗️ Arquitectura Conceptual
+
+El diseño debe contemplar:
+- **Arquitectura de microservicios** moderna y escalable
+- **Tecnologías cloud-native** (React, Node.js, PostgreSQL, Redis)
+- **Integraciones externas** (email, calendario, job boards, IA)
+- **APIs RESTful** para todos los servicios
+- **Seguridad enterprise** (OAuth, encriptación, auditoría)
+
+## 📊 Casos de Uso Requeridos
+
+1. **Aplicación de Candidato**: Proceso completo desde búsqueda hasta envío
+2. **Gestión de Pipeline**: Movimiento de candidatos por etapas del proceso
+3. **Evaluación Colaborativa**: Proceso de evaluación multi-evaluador
+
+Cada caso de uso debe incluir:
+- Actores, objetivo, precondiciones y postcondiciones
+- Flujo principal detallado
+- Flujos alternativos relevantes
+- Diagrama de flujo usando Mermaid
+
+## 🗄️ Modelo de Datos
+
+Definir entidades principales:
+- **Usuario** (reclutadores, hiring managers, admin)
+- **Candidato** (información personal, estado, puntuaciones)
+- **Posición de Trabajo** (descripción, requisitos, estado)
+- **Aplicación** (relación candidato-posición, estado del pipeline)
+- **Entrevista** (programación, feedback, evaluación)
+- **Evaluación** (scorecards, comentarios, decisiones)
+
+Incluir diagrama ER completo con relaciones.
+
+## 🔍 Diagrama C4
+
+Crear diagrama C4 de 4 niveles enfocado en el **Candidate Service**:
+1. **Contexto**: Sistema completo y actores externos
+2. **Contenedores**: Aplicaciones y servicios principales
+3. **Componentes**: Estructura interna del Candidate Service
+4. **Código**: Ejemplo de implementación del CV Parser
+
+## 📄 Formato de Entrega
+
+- Todo el contenido en **español** para el ejercicio académico
+- Usar **Markdown** con formato profesional
+- Incluir **diagramas Mermaid** para visualizaciones
+- Estructura clara con **tabla de contenidos**
+- **Enfoque en diseño**, no en implementación técnica específica
+
+El resultado debe ser un documento de diseño que pueda servir como base para futuro desarrollo, pero que por sí mismo represente un ejercicio académico completo de arquitectura de software.
+```
+
+---
+
+## 🔧 Prompts de Refinamiento del Diseño
+
+### Prompt para Lean Canvas
+
+```
+Crea un Lean Canvas detallado para LTI-GG que incluya:
+
+**Problema**:
+- Screening manual ineficiente de CVs
+- Experiencia pobre del candidato en procesos tradicionales
+- Decisiones de contratación sesgadas
+- Herramientas de HR fragmentadas y poco integradas
+
+**Solución**:
+- Motor de IA para evaluación automática y predicción de éxito
+- Portal unificado con colaboración en tiempo real
+- Diseño mobile-first para reclutadores en movimiento
+- Integraciones inteligentes con todo el ecosistema HR
+
+**Propuesta de Valor Única**:
+"El único ATS que combina colaboración en tiempo real con automatización de IA libre de sesgos"
+
+**Ventaja Injusta**:
+- Experiencia del equipo en startups tech y reclutamiento
+- Algoritmos propietarios de IA pre-entrenados
+- Partnerships estratégicos con universidades tecnológicas
+- First-mover en IA colaborativa para HR
+
+**Segmentos de Clientes**:
+- Departamentos de HR (50-500 empleados)
+- Startups en crecimiento y scale-ups tecnológicas
+- Agencias de reclutamiento especializadas
+- Empresas remote-first
+
+**Métricas Clave**:
+- Time-to-hire promedio
+- Quality of hire score
+- Adopción de usuarios (DAU/MAU)
+- Revenue per customer
+
+**Canales**:
+- Venta directa (enterprise)
+- Content marketing (SEO/blog)
+- Partnerships con consultoras HR
+- LinkedIn y social selling
+
+**Estructura de Costos** y **Fuentes de Ingresos** detalladas con modelo SaaS.
+
+Formato: Tabla ASCII visual que se vea profesional en markdown.
+```
+
+### Prompt para Casos de Uso con Diagramas
+
+```
+Desarrolla 3 casos de uso detallados para LTI-GG con especificaciones completas:
+
+**Caso de Uso 1: Aplicación de Candidato**
+- Actor: Candidato a empleo
+- Incluir: navegación de posiciones, formulario de aplicación, upload de CV, validación
+- Flujos alternativos: parsing de CV falla, validación de datos falla
+- Diagrama Mermaid con flujo completo
+
+**Caso de Uso 2: Gestión de Pipeline por Reclutador**
+- Actor: Reclutador
+- Incluir: dashboard visual, drag & drop entre etapas, notas y puntuaciones
+- Flujos alternativos: transición requiere aprobación, programación de entrevista
+- Diagrama Mermaid con decisiones y bucles
+
+**Caso de Uso 3: Evaluación Colaborativa**
+- Actores: Hiring Manager, Reclutador, Panel de Entrevistas
+- Incluir: scorecards individuales, agregación automática, resolución de conflictos
+- Flujos alternativos: discrepancias en evaluación, decisión aplazada
+- Diagrama Mermaid con múltiples actores
+
+Cada caso de uso debe seguir formato estándar UML:
+- Nombre, Actor(es), Objetivo
+- Precondiciones y Postcondiciones
+- Flujo Principal (pasos numerados)
+- Flujos Alternativos (nomenclatura 4a, 5b, etc.)
+- Diagrama de flujo Mermaid correspondiente
+
+Usa terminología en español y enfócate en la experiencia del usuario.
+```
+
+### Prompt para Modelo de Datos
+
+```
+Diseña el modelo de datos completo para LTI-GG incluyendo:
+
+**Entidades Principales** (6 mínimo):
+1. **Usuario**: id, email, nombre, rol, departamento, fecha_creacion, activo
+2. **Candidato**: id, nombre, email, telefono, ubicacion, cv_url, linkedin_url, puntuacion_ia, estado, fecha_aplicacion, fuente, notas
+3. **Posicion_Trabajo**: id, titulo, descripcion, requisitos, departamento, ubicacion, tipo_empleo, salario_min, salario_max, estado, fechas, reclutador_id
+4. **Aplicacion**: id, candidato_id, posicion_id, estado, fecha_aplicacion, carta_presentacion, puntuacion_total, etapa_actual, notas_reclutador
+5. **Entrevista**: id, aplicacion_id, entrevistador_id, fecha_hora, duracion, tipo, ubicacion, notas, puntuacion, estado
+6. **Evaluacion**: id, aplicacion_id, evaluador_id, puntuaciones (técnica, cultural, comunicación, total), comentarios, recomendacion, fecha
+
+**Especificaciones**:
+- Cada atributo con **tipo de dato** específico (String, Integer, Float, DateTime, Boolean, Enum)
+- **Enums** definidos para estados y categorías
+- **Claves primarias** y **foráneas** claramente marcadas
+- **Relaciones** entre entidades (1:1, 1:N, N:M)
+
+**Diagrama ER**:
+- Usar Mermaid erDiagram
+- Mostrar todas las entidades con sus atributos
+- Incluir relaciones con cardinalidad
+- Usar nomenclatura en español
+
+El modelo debe soportar todos los casos de uso definidos y ser escalable para funcionalidades futuras.
+```
+
+### Prompt para Arquitectura de Alto Nivel
+
+```
+Diseña la arquitectura de alto nivel para LTI-GG como sistema enterprise:
+
+**Arquitectura de Microservicios** con 8 servicios principales:
+1. **User Service**: Autenticación, autorización, gestión de perfiles
+2. **Candidate Service**: CRUD candidatos, parsing CVs, scoring IA
+3. **Job Service**: Gestión posiciones, publicación automática, matching
+4. **Application Service**: Pipeline aplicaciones, workflows automatizados
+5. **Interview Service**: Programación, gestión calendarios, feedback
+6. **Notification Service**: Emails, SMS, push notifications
+7. **AI Service**: Scoring candidatos, análisis CVs, predicciones
+8. **Analytics Service**: Métricas, reportes, dashboard ejecutivo
+
+**Stack Tecnológico**:
+- Frontend: React SPA + React Native mobile
+- Backend: Node.js/Express para APIs REST
+- Bases de datos: PostgreSQL (transaccional), MongoDB (analytics), Redis (cache)
+- Message Queue: RabbitMQ/Kafka para eventos
+- Storage: AWS S3 para archivos
+- Load Balancer: NGINX/CloudFlare
+
+**Integraciones Externas**:
+- Email: SendGrid para notificaciones
+- Calendar: Google Calendar/Outlook para programación
+- Job Boards: LinkedIn, Indeed, Glassdoor
+- Video: Zoom/Teams para entrevistas remotas
+- AI External: APIs de terceros para ML/NLP
+
+**Diagrama de Arquitectura**:
+- Usar Mermaid graph TB
+- Mostrar flujo de datos entre componentes
+- Incluir tecnologías específicas en cada nodo
+- Agrupar por capas (Cliente, Gateway, Servicios, Datos, Externos)
+
+**Principios Arquitectónicos**:
+- Microservicios independientes y desplegables
+- API-First con documentación OpenAPI
+- Event-driven para comunicación asíncrona
+- Cloud-native para contenedores y Kubernetes
+- Security-first con OAuth 2.0 y encriptación
+
+La arquitectura debe ser escalable, mantenible y preparada para crecimiento enterprise.
+```
+
+### Prompt para Diagrama C4 del Candidate Service
 
 ````
-# 🤖 Prompt for GitHub Copilot / ChatGPT — LTI ATS MVP Generator
+Crea un diagrama C4 completo de 4 niveles enfocado en el **Candidate Service**:
 
-Act as a **senior fullstack functional engineer** and **AI prompt engineer**. Your job is to generate a complete, bootable **MVP of an Applicant Tracking System (ATS)** for the startup **LTI**, applying Clean Architecture, DDD, and TDD.
+**Nivel 1 - Contexto del Sistema**:
+- LTI ATS Platform como sistema central
+- Actores: Reclutador, Candidato, Hiring Manager
+- Sistemas externos: Email, IA, Job Boards, Calendario
+- Relaciones de alto nivel
 
-This project will serve as a real-world academic showcase of prompt-based software development with modern technologies and functional programming.
+**Nivel 2 - Contenedores**:
+- Web App (React SPA)
+- Mobile App (React Native)
+- API Gateway (Kong)
+- Candidate Service (Node.js/Express)
+- Application Service, AI Service, Notification Service
+- Candidate Database (PostgreSQL), File Storage (S3), Cache (Redis)
 
-## 🎯 Objective
+**Nivel 3 - Componentes del Candidate Service**:
+- **Controllers**: Candidate Controller, Profile Controller, Search Controller
+- **Business Logic**: Candidate Manager, CV Parser, Scoring Engine, Search Engine
+- **Data Access**: Candidate Repository, File Manager, Cache Manager
+- **External Adapters**: AI Service Adapter, Notification Adapter, Storage Adapter
 
-Generate a **fully working and testable MVP** for an ATS platform that includes:
+**Nivel 4 - Código del CV Parser**:
+```typescript
+class CVParser {
+    private aiService: AIServiceAdapter;
+    private fileValidator: FileValidator;
 
-1. 📄 System description with key features and differentiators
-2. 🧠 Lean Canvas diagram to model the business
-3. ✅ 3–5 fully documented use cases + 1 diagram per use case
-4. 🧱 Entity-Relationship data model (names, types, relationships)
-5. 🏛️ High-level architecture (text + diagram)
-6. 🔍 C4 diagram for a selected core component (e.g., Candidate Pipeline)
-7. 📂 All output must be in `lti/LTI-GG/`, with main doc `LTI-GG.md` and prompts in `prompts.md`
+    async parseCV(fileBuffer: Buffer, fileName: string): Promise<ParsedCVData> {
+        // Validate file format and size
+        await this.fileValidator.validate(fileBuffer, fileName);
 
-## 🧰 Tech Stack
+        // Extract text from various formats (PDF, DOC, DOCX)
+        const extractedText = await this.extractText(fileBuffer, fileName);
 
-- **Frontend**: Elm (Elm Architecture) + `elm-css`
-- **Backend**: Elixir + Phoenix
-- **Database**: In-memory (ETS, Agent, Mnesia – choose what's fastest to configure and easiest to test)
-- **Auth**: Dummy login (`admin/admin123`) stored in frontend localStorage
+        // Use AI service to extract structured data
+        const structuredData = await this.aiService.extractCVData(extractedText);
 
-## 📐 Architecture
+        // Validate and clean extracted data
+        const cleanedData = this.validateAndCleanData(structuredData);
 
-- Modular Clean Architecture with:
-  - **Domain** layer: pure business logic, types, rules
-  - **Application** layer: use cases, orchestration
-  - **Infrastructure**: in-memory persistence, adapters
-  - **Web**: Phoenix routes, API adapters for Elm
-- Elm follows **pure functional programming** (no side effects in logic)
-- Use Elm **ports** where JS interop is needed
-- Elixir uses `@spec`, modules per context, and idiomatic FP patterns
+        return cleanedData;
+    }
 
-## 🧪 Testing
-
-- All functionality must be test-driven:
-  - Unit tests for: Elm update/model logic + Elixir domain & app logic
-  - Integration tests: Elixir API + Elm ↔ backend interactions
-- Include coverage setup (≥80%) and `make test` target
-
-## 📄 Output Requirements
-
-The result of this prompt must generate a complete working project that:
-
-- ✅ Follows DDD, TDD, and Clean Architecture strictly
-- ✅ Has full docs (`LTI-GG.md`) and diagrams (ASCII or Mermaid OK)
-- ✅ Has commit-based modular delivery (one commit per use case/layer)
-- ✅ Has strong DX: `make setup`, `make run`, `make test`, etc.
-- ✅ Starts with documentation → then tests → then passing code
-
-## 🛠️ Expected Commands
-
-```bash
-make setup         # Install all dependencies
-make run           # Start frontend + backend servers
-make test          # Run all tests
-make format        # Format all code
-make reset-db      # Reset in-memory store if needed
+    // ... métodos privados auxiliares
+}
 ````
 
-🔒 **Constraints**:
+**Responsabilidades del Candidate Service**:
 
-- No external DBs or complex setup
-- No JS/TS — frontend is Elm only
-- No untested logic — all must be TDD-driven
-- No skipped layers — every use case must pass through domain, app, infra, and web
+1. Gestión de perfiles de candidatos (CRUD completo)
+2. Parsing automático de CVs con extracción de datos estructurados
+3. Scoring con IA basado en requisitos del puesto
+4. Búsqueda avanzada con filtros complejos y similitud
+5. Gestión de archivos con upload, storage y versionado
+6. Integración con notificaciones y servicios externos
+7. Cache de consultas frecuentes para optimización
+8. Auditoría completa de operaciones para compliance
 
-📌 **Final Notes**: If anything is ambiguous (e.g., DB lib, login UX, Elm->Elixir ports), ask before coding. Do not omit diagrams or docs. Ensure the project boots with zero errors.
-
-This prompt must produce a fully working ATS MVP with solid architecture, great developer experience, clean code, and test coverage.
-
-```
-
----
-
-## 🔧 Implementation Prompts
-
-### Elixir Backend Setup Prompt
-
-```
-
-Create the complete Elixir Phoenix backend for the LTI ATS following these specifications:
-
-1. **Project Structure**: Use Phoenix 1.7+ with Clean Architecture
-2. **Contexts**: Separate contexts for Candidates, Applications, Users, and JobPositions
-3. **Domain Layer**: Pure Elixir modules with @spec for all functions
-4. **In-Memory Storage**: Use ETS tables for data persistence
-5. **API Design**: RESTful endpoints with proper HTTP status codes
-6. **Testing**: ExUnit with 80%+ coverage using ExCoveralls
-7. **Documentation**: @doc for all public functions
-
-Generate:
-
-- `mix.exs` with all dependencies
-- Domain modules with business logic
-- Application layer with use cases
-- Infrastructure with ETS repositories
-- Web layer with Phoenix controllers
-- Comprehensive test suite
-- Makefile for development workflow
-
-```
-
-### Elm Frontend Setup Prompt
-
-```
-
-Create the complete Elm frontend for the LTI ATS with these requirements:
-
-1. **Architecture**: Follow The Elm Architecture (TEA) strictly
-2. **Modules**: Separate modules for each major feature (Login, Pipeline, Candidates)
-3. **Types**: Strong typing for all data structures and messages
-4. **HTTP**: Type-safe API communication with the Elixir backend
-5. **Styling**: Use elm-css for component styling
-6. **State Management**: Pure functional state with no side effects in update functions
-7. **Testing**: elm-test for unit testing all logic
-
-Generate:
-
-- `elm.json` with dependencies
-- Main.elm with routing
-- Feature modules (Login, Dashboard, Pipeline)
-- API modules for backend communication
-- CSS modules for styling
-- Complete test suite
-- Build configuration
-
-```
-
-### Testing Strategy Prompt
-
-```
-
-Create a comprehensive testing strategy for the LTI ATS that includes:
-
-1. **Backend Testing**:
-
-   - Unit tests for domain logic
-   - Integration tests for API endpoints
-   - Property-based testing with PropEr
-   - Test coverage reporting
-
-2. **Frontend Testing**:
-
-   - Unit tests for update functions
-   - Model validation tests
-   - HTTP request/response testing
-   - View rendering tests
-
-3. **End-to-End Testing**:
-
-   - User journey tests
-   - API integration tests
-   - Performance benchmarks
-
-4. **Quality Assurance**:
-   - Code formatting with mix format and elm-format
-   - Static analysis with Credo and elm-review
-   - Continuous integration setup
-
-Generate all test files, configuration, and CI pipeline setup.
+Usar Mermaid para todos los diagramas con sintaxis correcta y etiquetas en español.
 
 ```
 
 ---
 
-## 🚀 Development Workflow Prompts
+## 📊 Metodología de Diseño Utilizada
 
-### Git Workflow Prompt
+### Enfoque Iterativo
 
-```
+1. **Análisis de Requisitos**: Comprensión del dominio ATS y necesidades del mercado
+2. **Diseño Conceptual**: Definición de valor añadido y ventajas competitivas
+3. **Modelado de Negocio**: Lean Canvas para validar propuesta de valor
+4. **Especificación de Casos de Uso**: Definición detallada de funcionalidades principales
+5. **Diseño de Datos**: Modelo entidad-relación completo y consistente
+6. **Arquitectura de Sistema**: Diseño de alto nivel con microservicios
+7. **Profundización Técnica**: Diagrama C4 de componente crítico
 
-Set up a professional Git workflow for the LTI ATS project:
+### Principios Aplicados
 
-1. **Branching Strategy**: Feature branches with PR reviews
-2. **Commit Convention**: Conventional commits with semantic versioning
-3. **Pre-commit Hooks**: Formatting, linting, and test execution
-4. **CI/CD Pipeline**: GitHub Actions for testing and deployment
-5. **Documentation**: README with setup instructions and contributing guidelines
+- **Domain-Driven Design**: Enfoque en el dominio del negocio de reclutamiento
+- **Clean Architecture**: Separación clara de responsabilidades por capas
+- **Microservices**: Arquitectura distribuida y escalable
+- **API-First**: Diseño orientado a APIs para máxima flexibilidad
+- **Security by Design**: Consideraciones de seguridad desde el diseño inicial
 
-Generate:
+### Herramientas de Documentación
 
-- .gitignore for Elixir and Elm
-- GitHub Actions workflows
-- Pre-commit configuration
-- Contributing guidelines
-- Issue and PR templates
-
-```
-
-### Performance Optimization Prompt
-
-```
-
-Optimize the LTI ATS for production performance:
-
-1. **Backend Optimization**:
-
-   - ETS table optimization for fast lookups
-   - Phoenix channel optimization for real-time features
-   - Memory usage profiling and optimization
-   - API response time optimization
-
-2. **Frontend Optimization**:
-
-   - Elm asset optimization and lazy loading
-   - Virtual DOM performance tuning
-   - HTTP request batching and caching
-   - Progressive Web App features
-
-3. **Monitoring**:
-   - Performance metrics collection
-   - Error tracking and logging
-   - Health check endpoints
-   - Resource usage monitoring
-
-Generate optimized code, monitoring setup, and performance benchmarks.
-
-```
+- **Markdown**: Para documentación técnica clara y mantenible
+- **Mermaid**: Para diagramas técnicos embebidos en markdown
+- **UML**: Para casos de uso y especificaciones funcionales
+- **C4 Model**: Para arquitectura de software en múltiples niveles de abstracción
 
 ---
 
-## 📊 Quality Assurance Prompts
+## 📝 Notas del Proceso
+
+### Iteraciones Realizadas
+
+1. **Primera iteración**: Enfoque inicial en implementación completa (error de interpretación)
+2. **Corrección de alcance**: Reorientación hacia diseño académico únicamente
+3. **Refinamiento**: Mejora de contenido en español y enfoque empresarial
+4. **Finalización**: Documento de diseño completo con todos los artefactos requeridos
+
+### Lecciones Aprendidas
+
+- Importancia de clarificar el alcance desde el inicio (diseño vs implementación)
+- Valor de los diagramas para comunicar arquitectura compleja
+- Necesidad de considerar tanto aspectos técnicos como de negocio
+- Beneficio de metodología iterativa para refinamiento progresivo
+
+### Entregables Finales
+
+- ✅ **LTI-GG.md**: Documento de diseño completo con todos los artefactos requeridos
+- ✅ **prompts.md**: Este documento con metodología y prompts utilizados
+- ❌ **Implementación**: No requerida para este ejercicio académico de diseño
+
+---
+
+## 🎓 Conclusiones del Ejercicio Académico
+
+Este ejercicio demostró la efectividad del uso de IA para:
+
+1. **Generación de Documentación Técnica**: Capacidad de crear documentación completa y profesional
+2. **Diseño de Arquitectura**: Habilidad para conceptualizar sistemas complejos de manera coherente
+3. **Modelado de Negocio**: Comprensión del contexto empresarial y propuesta de valor
+4. **Iteración y Refinamiento**: Mejora progresiva del diseño basada en feedback
+
+La metodología utilizada puede servir como marco de referencia para futuros ejercicios de diseño de sistemas utilizando asistentes de IA.
 
 ### Code Review Checklist Prompt
 
@@ -454,106 +601,7 @@ Generate user-friendly documentation with screenshots and examples.
 
 ---
 
-## 🎯 Success Metrics and Validation Prompts
-
-### Testing Validation Prompt
-
-```
-
-Validate the LTI ATS MVP against success criteria:
-
-1. **Functional Requirements**:
-
-   - All use cases implemented and tested
-   - User workflows complete end-to-end
-   - Error handling and edge cases covered
-
-2. **Non-Functional Requirements**:
-
-   - Performance benchmarks met
-   - Security requirements satisfied
-   - Usability and accessibility standards
-
-3. **Code Quality**:
-
-   - Test coverage above 80%
-   - Code style and formatting consistent
-   - Architecture principles followed
-
-4. **Documentation Quality**:
-   - All APIs documented
-   - User guides complete
-   - Developer documentation current
-
-Generate validation reports, test results, and quality metrics.
-
-```
-
-### Post-MVP Roadmap Prompt
-
-```
-
-Create a roadmap for LTI ATS evolution beyond MVP:
-
-1. **Short-term Enhancements** (1-3 months):
-
-   - Advanced search and filtering
-   - Mobile app development
-   - Additional integrations
-   - Performance optimizations
-
-2. **Medium-term Features** (3-6 months):
-
-   - Machine learning improvements
-   - Advanced analytics
-   - Multi-tenant architecture
-   - Enterprise features
-
-3. **Long-term Vision** (6-12 months):
-   - AI-powered recruitment automation
-   - Global expansion features
-   - Advanced compliance tools
-   - Platform ecosystem
-
-Generate feature specifications, technical requirements, and implementation timelines.
-
-```
-
 ---
 
-## 🎉 Final Result Summary
-
-**Status**: ✅ **COMPLETE SUCCESS**
-
-The prompts above successfully generated a **fully functional LTI ATS MVP** that exceeds all original requirements:
-
-### ✅ What Was Delivered
-
-- **Complete Working System**: Frontend (Elm) + Backend (Elixir/Phoenix)
-- **100% Requirements Fulfilled**: All 9 original requirements met
-- **Comprehensive Testing**: 52 automated tests + integration testing
-- **Production-Ready Architecture**: Clean Architecture + DDD patterns
-- **Developer Experience**: One-command setup (`make setup && make run`)
-
-### ✅ Key Achievements
-
-- **Documentation**: 14 MD files with comprehensive guides
-- **Testing**: Unit, integration, and E2E test coverage
-- **Architecture**: Enterprise-grade functional programming patterns
-- **User Experience**: Modern responsive UI with authentication
-- **API Design**: RESTful HTTP API with proper CORS handling
-
-### ✅ Files Generated
-
-- **Backend**: 25+ Elixir files with domain/application/infrastructure layers
-- **Frontend**: Complete Elm application with type-safe UI
-- **Testing**: Comprehensive test suites for all components
-- **Documentation**: Multi-layered documentation system
-- **DevOps**: Makefile with automation for setup/run/test/format
-
-This MVP demonstrates that AI-assisted development can deliver enterprise-quality software systems when guided by well-structured prompts and systematic architectural thinking.
-
----
-
-*This document captures all prompts used in the LTI ATS MVP development process, enabling reproducible and systematic software development using AI assistance.*
+*Este documento contiene todos los prompts utilizados en el proceso de diseño académico del sistema LTI-GG, proporcionando una metodología reproducible para el diseño de sistemas utilizando asistencia de IA.*
 ```

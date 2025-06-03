@@ -13,7 +13,7 @@
 # Comprehensive testing
 make test
 
-# Use case validation  
+# Use case validation
 make test-use-cases
 
 # See full guide

@@ -1,77 +1,45 @@
-# LTI ATS - Applicant Tracking System MVP
+# LTI-GG - Applicant Tracking System del Futuro
 
-## 📋 Table of Contents
+## 📋 Tabla de Contenidos
 
-1. [System Description](#system-description)
+1. [Descripción del Sistema](#descripción-del-sistema)
 2. [Lean Canvas](#lean-canvas)
-3. [Use Cases](#use-cases)
-4. [Data Model](#data-model)
-5. [High-Level Architecture](#high-level-architecture)
-6. [C4 Diagram](#c4-diagram)
-7. [Getting Started](#getting-started)
-
-## 📚 Additional Documentation
-
-- **[RUN.md](./RUN.md)** - Quick start guide (2-minute setup)
-- **[TESTING.md](./TESTING.md)** - Comprehensive testing documentation
-- **[COMPLIANCE.md](./COMPLIANCE.md)** - Requirements fulfillment verification
-- **[prompts.md](./prompts.md)** - AI prompts used in development
+3. [Casos de Uso Principales](#casos-de-uso-principales)
+4. [Modelo de Datos](#modelo-de-datos)
+5. [Diseño de Alto Nivel](#diseño-de-alto-nivel)
+6. [Diagrama C4](#diagrama-c4)
 
 ---
 
-## 🚀 System Description
+## 🚀 Descripción del Sistema
 
-### Overview
+### ¿Qué es LTI-GG?
 
-LTI (Leading Talent Intelligence) is a next-generation Applicant Tracking System designed to revolutionize recruitment through AI-powered automation, real-time collaboration, and intelligent candidate matching.
+LTI-GG (Leading Talent Intelligence - Global Generation) es una plataforma de nueva generación para la gestión de talento que revoluciona el proceso de reclutamiento mediante inteligencia artificial, automatización inteligente y experiencia de usuario superior.
 
-### 🎯 Key Value Propositions
+### 💡 Valor Añadido
 
-- **AI-Powered Candidate Scoring**: Automated candidate evaluation using machine learning algorithms
-- **Real-Time Collaborative Hiring**: Live collaboration tools for hiring teams with instant feedback loops
-- **Intelligent Pipeline Management**: Smart candidate progression with automated workflow triggers
-- **Bias-Reduction Analytics**: Data-driven insights to promote diversity and reduce unconscious bias
-- **Integration-First Architecture**: Seamless integration with popular HR tools and job boards
+- **IA Predictiva**: Motor de inteligencia artificial que predice el éxito de candidatos basado en patrones históricos y análisis comportamental
+- **Automatización Inteligente**: Flujos de trabajo que se adaptan dinámicamente según el tipo de posición y perfil del candidato
+- **Experiencia Unificada**: Portal único que conecta candidatos, reclutadores y hiring managers en tiempo real
+- **Analytics Avanzados**: Dashboard predictivo con métricas de rendimiento y recomendaciones de optimización
+- **Diversidad e Inclusión**: Herramientas integradas para promover contratación diversa y eliminar sesgos inconscientes
 
-### 🏆 Competitive Advantages
+### 🏆 Ventajas Competitivas
 
-1. **Functional Programming Architecture**: Built with Elm + Elixir for maximum reliability and maintainability
-2. **Real-Time Everything**: WebSocket-based live updates across all user interactions
-3. **Mobile-First Design**: Progressive Web App optimized for on-the-go recruiting
-4. **Zero-Configuration AI**: Pre-trained models that work out-of-the-box without complex setup
-5. **Transparent Pricing**: No hidden fees, pay-per-active-recruiter model
+1. **Motor de IA Pre-entrenado**: No requiere configuración inicial, aprende de patrones exitosos desde el día uno
+2. **Arquitectura Cloud-Native**: Escalabilidad automática y disponibilidad 99.9% garantizada
+3. **Integración Ecosistémica**: Conectividad nativa con +50 plataformas de HR, job boards y herramientas de evaluación
+4. **Mobile-First Design**: Optimizado para reclutadores que trabajan en movimiento con apps nativas iOS/Android
+5. **Transparencia Total**: Modelo de precios por uso con visibilidad completa de costos y ROI
 
-### 🎛️ Core Features
+### 🎯 Funciones Principales
 
-- **Candidate Pipeline Management**: Visual kanban-style boards with drag-and-drop functionality
-- **Smart Job Posting**: Auto-generate job descriptions and post to multiple platforms
-- **Interview Scheduling**: Intelligent calendar integration with conflict resolution
-- **Collaborative Evaluation**: Multi-reviewer scorecards with consensus tracking
-- **Analytics Dashboard**: Real-time metrics on hiring performance and bottlenecks
-
----
-
-## 🚦 MVP Scope & Limitations
-
-This MVP implements a minimal, bootable Applicant Tracking System with the following characteristics:
-
-- **Implemented Entities:** Candidate, Job, Application
-- **Not Implemented:** User management, Interview, Evaluation, advanced AI, real email/calendar integrations
-- **Persistence:** In-memory only (no external DB)
-- **Authentication:** Dummy login (admin/admin123), no real user roles
-- **Frontend:** Elm SPA with job and application listing, basic forms, and error handling
-- **Backend:** Elixir/Phoenix API with CRUD for Candidate, Job, Application
-- **Testing:** ≥80% coverage, TDD for all layers
-- **Diagrams & Docs:** All diagrams and documentation reflect MVP scope
-
-### Limitations
-
-- No real AI scoring, email, or calendar integration (placeholders only)
-- No real-time WebSocket updates (HTTP only)
-- No user registration or password management
-- No Interview/Evaluation flows
-- No persistent storage (data lost on restart)
-- Minimal UI/UX polish (basic layout, no advanced styling)
+- **Pipeline Inteligente**: Gestión visual con recomendaciones automáticas de próximos pasos
+- **Sourcing Automatizado**: Búsqueda proactiva de candidatos en múltiples canales con matching inteligente
+- **Evaluación 360°**: Sistema de evaluación colaborativa con calibración automática entre evaluadores
+- **Scheduling AI**: Coordinación automática de entrevistas con optimización de agendas y preferencias
+- **Candidate Experience Hub**: Portal personalizado para candidatos con seguimiento en tiempo real
 
 ---
 
@@ -81,319 +49,665 @@ This MVP implements a minimal, bootable Applicant Tracking System with the follo
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                                LTI ATS LEAN CANVAS                             │
 ├─────────────────┬─────────────────┬─────────────────┬─────────────────────────────┤
-│ PROBLEM         │ SOLUTION        │ UNIQUE VALUE    │ UNFAIR ADVANTAGE            │
-│                 │                 │ PROPOSITION     │                             │
-│ • Manual resume │ • AI-powered    │ The only ATS    │ • Functional programming    │
-│   screening     │   candidate     │ that combines   │   expertise (Elm/Elixir)    │
-│ • Poor candidate│   scoring       │ real-time       │ • Academic research         │
-│   experience    │ • Real-time     │ collaboration   │   partnerships              │
-│ • Biased hiring │   collaboration │ with bias-free  │ • First-mover advantage     │
-│   decisions     │ • Mobile-first  │ AI automation   │   in functional ATS space   │
-│ • Fragmented    │   design        │                 │                             │
-│   hiring tools  │ • Smart         │                 │                             │
-│                 │   integrations  │                 │                             │
+│ PROBLEMA        │ SOLUCIÓN        │ PROPUESTA DE    │ VENTAJA INJUSTA             │
+│                 │                 │ VALOR ÚNICA     │                             │
+│ • Screening     │ • IA para       │ El único ATS    │ • Experiencia en startups   │
+│   manual de CVs │   evaluación    │ que combina     │   tech y reclutamiento      │
+│ • Experiencia   │   automática    │ colaboración    │ • Algoritmos propietarios   │
+│   pobre del     │ • Colaboración  │ en tiempo real  │   de IA                     │
+│   candidato     │   en tiempo     │ con automatiza- │ • Partnerships estratégicos │
+│ • Decisiones    │   real          │ ción de IA      │   con universidades tech    │
+│   sesgadas      │ • Diseño        │ libre de sesgos │ • First-mover en IA         │
+│ • Herramientas  │   mobile-first  │                 │   colaborativa              │
+│   fragmentadas  │ • Integraciones │                 │                             │
+│                 │   inteligentes  │                 │                             │
 ├─────────────────┼─────────────────┴─────────────────┼─────────────────────────────┤
-│ KEY METRICS     │ CHANNELS                          │ CUSTOMER SEGMENTS           │
+│ MÉTRICAS CLAVE  │ CANALES                           │ SEGMENTOS DE CLIENTES       │
 │                 │                                   │                             │
-│ • Time-to-hire  │ • Direct sales (enterprise)       │ • HR departments (50-500    │
-│ • Quality of    │ • Content marketing (SEO/blog)    │   employees)                │
-│   hire score    │ • Partnership with HR consulting  │ • Growing startups          │
-│ • User adoption │ • Product Hunt & tech communities │ • Recruitment agencies      │
-│ • Revenue per   │ • LinkedIn & social selling       │ • Remote-first companies    │
-│   customer      │ • Referral program                │                             │
+│ • Time-to-hire  │ • Venta directa (enterprise)      │ • Departamentos de HR       │
+│ • Quality of    │ • Content marketing (SEO/blog)    │   (50-500 empleados)        │
+│   hire score    │ • Partnerships con consultoras HR │ • Startups en crecimiento   │
+│ • Adopción de   │ • Product Hunt y comunidades tech │ • Agencias de reclutamiento │
+│   usuarios      │ • LinkedIn y social selling       │ • Empresas remote-first     │
+│ • Revenue per   │ • Programa de referidos           │ • Scale-ups tecnológicas    │
+│   customer      │                                   │                             │
 │                 │                                   │                             │
 ├─────────────────┴───────────────────────────────────┼─────────────────────────────┤
-│ COST STRUCTURE                                      │ REVENUE STREAMS             │
+│ ESTRUCTURA DE COSTOS                                │ FUENTES DE INGRESOS         │
 │                                                     │                             │
-│ • Engineering team (60%)                           │ • SaaS subscription         │
-│ • Cloud infrastructure (15%)                       │   ($50/recruiter/month)     │
-│ • Sales & marketing (20%)                          │ • Premium AI features      │
-│ • Legal & compliance (5%)                          │   ($20/recruiter/month)     │
-│                                                     │ • Implementation services   │
-│                                                     │   ($5,000 one-time)        │
-│                                                     │ • Data analytics package    │
-│                                                     │   ($10/recruiter/month)     │
+│ • Equipo de ingeniería (60%)                       │ • Suscripción SaaS          │
+│ • Infraestructura cloud (15%)                      │   (€50/reclutador/mes)      │
+│ • Ventas y marketing (20%)                         │ • Features premium de IA    │
+│ • Legal y compliance (5%)                          │   (€20/reclutador/mes)      │
+│                                                     │ • Servicios de implementa-  │
+│                                                     │   ción (€5,000 una vez)     │
+│                                                     │ • Paquete de analytics      │
+│                                                     │   (€10/reclutador/mes)      │
 └─────────────────────────────────────────────────────┴─────────────────────────────┘
 ```
 
 ---
 
-## 📋 Use Cases
+## 📋 Casos de Uso Principales
 
-### Use Case 1: Candidate Application Submission
+### Caso de Uso 1: Aplicación de Candidato
 
-**Actor**: Job Candidate
-**Goal**: Submit application for a job position
-**Preconditions**: Job posting is publicly available
+**Actor**: Candidato a empleo  
+**Objetivo**: Enviar aplicación para una posición de trabajo  
+**Precondiciones**: La oferta de trabajo está publicada y disponible
 
-**Main Flow**:
+**Flujo Principal**:
 
-1. Candidate browses available job positions
-2. Candidate selects a position of interest
-3. System displays job details and application form
-4. Candidate fills out personal information and uploads resume
-5. System validates application data
-6. System confirms successful submission
-7. System sends confirmation email to candidate
+1. El candidato navega por las posiciones disponibles
+2. El candidato selecciona una posición de interés
+3. El sistema muestra detalles del trabajo y formulario de aplicación
+4. El candidato completa información personal y sube su CV
+5. El sistema valida los datos de la aplicación
+6. El sistema confirma el envío exitoso
+7. El sistema envía email de confirmación al candidato
 
-**Alternative Flows**:
+**Flujos Alternativos**:
 
-- 4a. Resume parsing fails → System requests manual data entry
-- 5a. Validation fails → System highlights errors and requests correction
+- 4a. Parsing del CV falla → El sistema solicita entrada manual de datos
+- 5a. Validación falla → El sistema resalta errores y solicita corrección
 
-**Postconditions**: Application is stored in system and enters initial screening
+**Postcondiciones**: La aplicación se almacena en el sistema y entra en screening inicial
 
 ```mermaid
 graph TD
-    A[Candidate visits job portal] --> B[Browse available positions]
-    B --> C[Select position]
-    C --> D[Fill application form]
-    D --> E[Upload resume]
-    E --> F{Validation successful?}
-    F -->|Yes| G[Submit application]
-    F -->|No| H[Show errors]
+    A[Candidato visita portal] --> B[Navega posiciones disponibles]
+    B --> C[Selecciona posición]
+    C --> D[Completa formulario]
+    D --> E[Sube CV]
+    E --> F{¿Validación exitosa?}
+    F -->|Sí| G[Envía aplicación]
+    F -->|No| H[Muestra errores]
     H --> D
-    G --> I[Send confirmation]
-    I --> J[Application in pipeline]
+    G --> I[Envía confirmación]
+    I --> J[Aplicación en pipeline]
 ```
 
-### Use Case 2: Recruiter Pipeline Management
+### Caso de Uso 2: Gestión de Pipeline por Reclutador
 
-**Actor**: Recruiter
-**Goal**: Manage candidates through hiring pipeline stages
-**Preconditions**: Recruiter is authenticated and has assigned candidates
+**Actor**: Reclutador  
+**Objetivo**: Gestionar candidatos a través de las etapas del pipeline de contratación  
+**Precondiciones**: El reclutador está autenticado y tiene candidatos asignados
 
-**Main Flow**:
+**Flujo Principal**:
 
-1. Recruiter opens pipeline dashboard
-2. System displays candidates organized by pipeline stages
-3. Recruiter reviews candidate profiles and resumes
-4. Recruiter moves candidates between stages (drag & drop)
-5. System triggers automated actions based on stage transitions
-6. Recruiter adds notes and scores to candidate profiles
-7. System saves all changes and notifies relevant stakeholders
+1. El reclutador abre el dashboard del pipeline
+2. El sistema muestra candidatos organizados por etapas del pipeline
+3. El reclutador revisa perfiles y CVs de candidatos
+4. El reclutador mueve candidatos entre etapas (drag & drop)
+5. El sistema activa acciones automatizadas según transiciones de etapa
+6. El reclutador añade notas y puntuaciones a perfiles de candidatos
+7. El sistema guarda todos los cambios y notifica a stakeholders relevantes
 
-**Alternative Flows**:
+**Flujos Alternativos**:
 
-- 4a. Stage transition requires approval → System sends notification to hiring manager
-- 6a. Recruiter schedules interview → System integrates with calendar
+- 4a. Transición de etapa requiere aprobación → Sistema envía notificación a hiring manager
+- 6a. Reclutador programa entrevista → Sistema integra con calendario
 
-**Postconditions**: Candidate status updated, stakeholders notified
+**Postcondiciones**: Estado del candidato actualizado, stakeholders notificados
 
 ```mermaid
 graph TD
-    A[Recruiter logs in] --> B[Open pipeline dashboard]
-    B --> C[Review candidates]
-    C --> D[Select candidate]
-    D --> E{Action needed?}
-    E -->|Move stage| F[Drag to new stage]
-    E -->|Add notes| G[Add evaluation notes]
-    E -->|Schedule interview| H[Open calendar integration]
-    F --> I[Trigger automation]
+    A[Reclutador se loguea] --> B[Abre dashboard pipeline]
+    B --> C[Revisa candidatos]
+    C --> D[Selecciona candidato]
+    D --> E{¿Acción necesaria?}
+    E -->|Mover etapa| F[Arrastra a nueva etapa]
+    E -->|Añadir notas| G[Añade notas de evaluación]
+    E -->|Programar entrevista| H[Abre integración calendario]
+    F --> I[Activa automatización]
     G --> I
     H --> I
-    I --> J[Notify stakeholders]
+    I --> J[Notifica stakeholders]
     J --> C
 ```
 
-### Use Case 3: Collaborative Candidate Evaluation
+### Caso de Uso 3: Evaluación Colaborativa de Candidatos
 
-**Actor**: Hiring Manager, Recruiter, Interview Panel
-**Goal**: Collaboratively evaluate and make hiring decisions
-**Preconditions**: Candidate has completed interview process
+**Actor**: Hiring Manager, Reclutador, Panel de Entrevistas  
+**Objetivo**: Evaluar colaborativamente y tomar decisiones de contratación  
+**Precondiciones**: El candidato ha completado el proceso de entrevistas
 
-**Main Flow**:
+**Flujo Principal**:
 
-1. System notifies all evaluators when candidate reaches evaluation stage
-2. Each evaluator accesses candidate's complete profile
-3. Evaluators submit individual scorecards and feedback
-4. System aggregates scores and identifies consensus/conflicts
-5. Hiring manager reviews aggregated evaluation
-6. Team discusses discrepancies in real-time chat
-7. Final hiring decision is recorded
-8. System initiates offer/rejection workflow
+1. El sistema notifica a todos los evaluadores cuando el candidato llega a etapa de evaluación
+2. Cada evaluador accede al perfil completo del candidato
+3. Los evaluadores envían scorecards individuales y feedback
+4. El sistema agrega puntuaciones e identifica consenso/conflictos
+5. El hiring manager revisa la evaluación agregada
+6. El equipo discute discrepancias en chat en tiempo real
+7. Se registra la decisión final de contratación
+8. El sistema inicia workflow de oferta/rechazo
 
-**Alternative Flows**:
+**Flujos Alternativos**:
 
-- 4a. Scores show significant discrepancy → System triggers discussion phase
-- 7a. Decision is deferred → System schedules follow-up meeting
+- 4a. Las puntuaciones muestran discrepancia significativa → Sistema activa fase de discusión
+- 7a. La decisión se aplaza → Sistema programa reunión de seguimiento
 
-**Postconditions**: Hiring decision recorded, next steps initiated
+**Postcondiciones**: Decisión de contratación registrada, próximos pasos iniciados
 
 ```mermaid
 graph TD
-    A[Candidate completes interviews] --> B[Notify evaluators]
-    B --> C[Evaluators access profile]
-    C --> D[Submit scorecards]
-    D --> E[System aggregates scores]
-    E --> F{Consensus reached?}
-    F -->|Yes| G[Hiring manager reviews]
-    F -->|No| H[Trigger discussion]
-    H --> I[Real-time chat session]
+    A[Candidato completa entrevistas] --> B[Notifica evaluadores]
+    B --> C[Evaluadores acceden perfil]
+    C --> D[Envían scorecards]
+    D --> E[Sistema agrega puntuaciones]
+    E --> F{¿Consenso alcanzado?}
+    F -->|Sí| G[Hiring manager revisa]
+    F -->|No| H[Activa discusión]
+    H --> I[Sesión chat tiempo real]
     I --> G
-    G --> J[Record final decision]
-    J --> K[Initiate next workflow]
+    G --> J[Registra decisión final]
+    J --> K[Inicia próximo workflow]
 ```
 
 ---
 
-## 🗄️ Data Model (MVP)
+## 🗄️ Modelo de Datos
 
-**Implemented:**
+### Entidades Principales
 
-- Candidate
-- JobPosition (as Job)
-- Application
+#### Usuario
 
-**Not Implemented:**
+- **id**: String (PK)
+- **email**: String (único)
+- **nombre**: String
+- **rol**: Enum (Reclutador, HiringManager, Admin)
+- **departamento**: String
+- **fecha_creacion**: DateTime
+- **activo**: Boolean
 
-- User
-- Interview
-- Evaluation
+#### Candidato
 
-Update diagrams and entity lists to reflect only implemented entities.
+- **id**: String (PK)
+- **nombre**: String
+- **email**: String (único)
+- **telefono**: String
+- **ubicacion**: String
+- **cv_url**: String
+- **linkedin_url**: String
+- **puntuacion_ia**: Float
+- **estado**: Enum (Aplicado, Screening, Entrevista, Evaluacion, Contratado, Rechazado)
+- **fecha_aplicacion**: DateTime
+- **fuente**: String
+- **notas**: Text
 
----
+#### Posicion_Trabajo
 
-## 🏗️ High-Level Architecture (MVP)
+- **id**: String (PK)
+- **titulo**: String
+- **descripcion**: Text
+- **requisitos**: Text
+- **departamento**: String
+- **ubicacion**: String
+- **tipo_empleo**: Enum (FullTime, PartTime, Contrato, Practicas)
+- **salario_min**: Integer
+- **salario_max**: Integer
+- **estado**: Enum (Borrador, Publicada, Pausada, Cerrada)
+- **fecha_publicacion**: DateTime
+- **fecha_cierre**: DateTime
+- **reclutador_id**: String (FK → Usuario)
 
-- **Frontend:** Elm SPA (job/application CRUD, login)
-- **Backend:** Phoenix API (CRUD for Candidate, Job, Application)
-- **Persistence:** In-memory (Agent/ETS)
-- **No real-time, no external integrations**
+#### Aplicacion
 
----
+- **id**: String (PK)
+- **candidato_id**: String (FK → Candidato)
+- **posicion_id**: String (FK → Posicion_Trabajo)
+- **estado**: Enum (Pendiente, Revisando, Entrevista, Evaluacion, Oferta, Contratado, Rechazado)
+- **fecha_aplicacion**: DateTime
+- **carta_presentacion**: Text
+- **puntuacion_total**: Float
+- **etapa_actual**: String
+- **notas_reclutador**: Text
 
-## 🔍 C4 Diagram (MVP)
+#### Entrevista
+
+- **id**: String (PK)
+- **aplicacion_id**: String (FK → Aplicacion)
+- **entrevistador_id**: String (FK → Usuario)
+- **fecha_hora**: DateTime
+- **duracion_minutos**: Integer
+- **tipo**: Enum (Telefonica, Presencial, VideoLlamada, Tecnica)
+- **ubicacion**: String
+- **notas**: Text
+- **puntuacion**: Float
+- **estado**: Enum (Programada, Completada, Cancelada, Reprogramada)
+
+#### Evaluacion
+
+- **id**: String (PK)
+- **aplicacion_id**: String (FK → Aplicacion)
+- **evaluador_id**: String (FK → Usuario)
+- **puntuacion_tecnica**: Float
+- **puntuacion_cultural**: Float
+- **puntuacion_comunicacion**: Float
+- **puntuacion_total**: Float
+- **comentarios**: Text
+- **recomendacion**: Enum (Contratar, Rechazar, Indecisos)
+- **fecha_evaluacion**: DateTime
+
+### Relaciones
 
 ```mermaid
-flowchart TD
-    subgraph Frontend (Elm SPA)
-        FE1[Login Page]
-        FE2[Job List]
-        FE3[Application List]
-    end
-    subgraph Backend (Phoenix API)
-        BE1[Candidate Controller]
-        BE2[Job Controller]
-        BE3[Application Controller]
-        BE4[In-memory Repos (Agent)]
-        BE5[Domain Logic]
-    end
-    FE1 -- login/logout --> BE1
-    FE2 -- fetch jobs --> BE2
-    FE3 -- fetch applications --> BE3
-    BE1 -- CRUD --> BE4
-    BE2 -- CRUD --> BE4
-    BE3 -- CRUD --> BE4
-    BE4 -- domain ops --> BE5
-```
+erDiagram
+    Usuario ||--o{ Posicion_Trabajo : "crea/gestiona"
+    Usuario ||--o{ Entrevista : "conduce"
+    Usuario ||--o{ Evaluacion : "evalua"
 
-- **No Interview/Evaluation/User contexts in MVP**
-- **No external DB or integrations**
-- **All flows pass through all Clean Architecture layers**
+    Candidato ||--o{ Aplicacion : "aplica_a"
+
+    Posicion_Trabajo ||--o{ Aplicacion : "recibe"
+
+    Aplicacion ||--o{ Entrevista : "tiene"
+    Aplicacion ||--o{ Evaluacion : "recibe"
+
+    Usuario {
+        string id PK
+        string email
+        string nombre
+        enum rol
+        string departamento
+        datetime fecha_creacion
+        boolean activo
+    }
+
+    Candidato {
+        string id PK
+        string nombre
+        string email
+        string telefono
+        string ubicacion
+        string cv_url
+        string linkedin_url
+        float puntuacion_ia
+        enum estado
+        datetime fecha_aplicacion
+        string fuente
+        text notas
+    }
+
+    Posicion_Trabajo {
+        string id PK
+        string titulo
+        text descripcion
+        text requisitos
+        string departamento
+        string ubicacion
+        enum tipo_empleo
+        integer salario_min
+        integer salario_max
+        enum estado
+        datetime fecha_publicacion
+        datetime fecha_cierre
+        string reclutador_id FK
+    }
+
+    Aplicacion {
+        string id PK
+        string candidato_id FK
+        string posicion_id FK
+        enum estado
+        datetime fecha_aplicacion
+        text carta_presentacion
+        float puntuacion_total
+        string etapa_actual
+        text notas_reclutador
+    }
+
+    Entrevista {
+        string id PK
+        string aplicacion_id FK
+        string entrevistador_id FK
+        datetime fecha_hora
+        integer duracion_minutos
+        enum tipo
+        string ubicacion
+        text notas
+        float puntuacion
+        enum estado
+    }
+
+    Evaluacion {
+        string id PK
+        string aplicacion_id FK
+        string evaluador_id FK
+        float puntuacion_tecnica
+        float puntuacion_cultural
+        float puntuacion_comunicacion
+        float puntuacion_total
+        text comentarios
+        enum recomendacion
+        datetime fecha_evaluacion
+    }
+```
 
 ---
 
-## 🏛️ Clean Architecture & DDD (MVP)
+## 🏗️ Diseño de Alto Nivel
 
-The system is structured according to Clean Architecture and Domain-Driven Design (DDD) principles:
+### Arquitectura General
+
+El sistema LTI está diseñado con una arquitectura moderna de microservicios que prioriza la escalabilidad, mantenibilidad y experiencia del usuario.
 
 ```mermaid
-flowchart TD
-    UI[Elm SPA (UI)]
-    Web[Phoenix Web Layer (Controllers, Router)]
-    App[Application Layer (Use Cases)]
-    Domain[Domain Layer (Entities, Business Rules)]
-    Infra[Infrastructure Layer (In-memory Repos)]
-    UI -- HTTP/JSON --> Web
-    Web -- Calls Use Cases --> App
-    App -- Operates on --> Domain
-    App -- Uses --> Infra
-    Infra -- Persists/Fetches --> Domain
+graph TB
+    subgraph "Cliente"
+        WEB[Web App - React]
+        MOBILE[Mobile App - React Native]
+    end
+
+    subgraph "Load Balancer"
+        LB[NGINX/CloudFlare]
+    end
+
+    subgraph "API Gateway"
+        GATEWAY[Kong/Zuul]
+    end
+
+    subgraph "Microservicios"
+        USER[User Service]
+        CANDIDATE[Candidate Service]
+        JOB[Job Service]
+        APPLICATION[Application Service]
+        INTERVIEW[Interview Service]
+        NOTIFICATION[Notification Service]
+        AI[AI Scoring Service]
+        ANALYTICS[Analytics Service]
+    end
+
+    subgraph "Bases de Datos"
+        USERDB[(User DB - PostgreSQL)]
+        CANDIDATEDB[(Candidate DB - PostgreSQL)]
+        JOBDB[(Job DB - PostgreSQL)]
+        ANALYTICSDB[(Analytics DB - MongoDB)]
+        CACHE[(Redis Cache)]
+    end
+
+    subgraph "Servicios Externos"
+        EMAIL[Email Service - SendGrid]
+        CALENDAR[Calendar API - Google/Outlook]
+        STORAGE[File Storage - AWS S3]
+        AI_EXT[External AI APIs]
+    end
+
+    subgraph "Message Queue"
+        QUEUE[RabbitMQ/Apache Kafka]
+    end
+
+    WEB --> LB
+    MOBILE --> LB
+    LB --> GATEWAY
+
+    GATEWAY --> USER
+    GATEWAY --> CANDIDATE
+    GATEWAY --> JOB
+    GATEWAY --> APPLICATION
+    GATEWAY --> INTERVIEW
+    GATEWAY --> NOTIFICATION
+    GATEWAY --> AI
+    GATEWAY --> ANALYTICS
+
+    USER --> USERDB
+    CANDIDATE --> CANDIDATEDB
+    JOB --> JOBDB
+    APPLICATION --> CANDIDATEDB
+    APPLICATION --> JOBDB
+    INTERVIEW --> CANDIDATEDB
+    ANALYTICS --> ANALYTICSDB
+
+    USER --> CACHE
+    CANDIDATE --> CACHE
+    JOB --> CACHE
+
+    NOTIFICATION --> EMAIL
+    INTERVIEW --> CALENDAR
+    CANDIDATE --> STORAGE
+    AI --> AI_EXT
+
+    APPLICATION --> QUEUE
+    INTERVIEW --> QUEUE
+    NOTIFICATION --> QUEUE
 ```
 
-- **Domain Layer**: Pure business logic, no dependencies (see `backend/lib/lti_gg_backend/domain/`)
-- **Application Layer**: Use cases, orchestration (see `backend/lib/lti_gg_backend/application/`)
-- **Infrastructure Layer**: In-memory repositories (see `backend/lib/lti_gg_backend/infrastructure/`)
-- **Web Layer**: Phoenix controllers/routes (see `backend/lib/lti_gg_backend_web/`)
-- **Frontend**: Elm SPA (see `frontend/src/`)
+### Componentes Principales
+
+#### Frontend
+
+- **Web Application**: React SPA con TypeScript para máxima mantenibilidad
+- **Mobile Application**: React Native para iOS/Android con funcionalidad offline
+- **Admin Dashboard**: Panel de administración con analytics avanzados
+
+#### Backend Services
+
+- **User Service**: Autenticación, autorización, gestión de perfiles
+- **Candidate Service**: CRUD de candidatos, parsing de CVs, scoring con IA
+- **Job Service**: Gestión de posiciones, publicación automática, matching
+- **Application Service**: Pipeline de aplicaciones, workflows automatizados
+- **Interview Service**: Programación, gestión de calendarios, feedback
+- **Notification Service**: Emails, SMS, push notifications
+- **AI Service**: Scoring de candidatos, análisis de CVs, predicciones
+- **Analytics Service**: Métricas, reportes, dashboard ejecutivo
+
+#### Persistencia
+
+- **PostgreSQL**: Datos transaccionales (usuarios, candidatos, jobs)
+- **MongoDB**: Analytics y datos no estructurados
+- **Redis**: Cache y sesiones
+- **AWS S3**: Almacenamiento de archivos (CVs, documentos)
+
+#### Integraciones
+
+- **Email**: SendGrid para notificaciones automáticas
+- **Calendar**: Google Calendar/Outlook para programación de entrevistas
+- **Job Boards**: LinkedIn, Indeed, Glassdoor para publicación automática
+- **Video**: Zoom/Teams para entrevistas remotas
+
+### Principios Arquitectónicos
+
+1. **Microservicios**: Servicios independientes y desplegables por separado
+2. **API-First**: Todas las funcionalidades expuestas vía APIs REST
+3. **Event-Driven**: Comunicación asíncrona vía message queues
+4. **Cloud-Native**: Diseñado para contenedores y Kubernetes
+5. **Security-First**: OAuth 2.0, encriptación end-to-end, auditoría completa
 
 ---
 
-## 🗂️ Backend Structure & API
+## 🔍 Diagrama C4 - Candidate Service
 
-- **Domain Entities**: `Candidate`, `Job`, `Application`
-  - Files: `domain/candidate.ex`, `domain/job.ex`, `domain/application.ex`
-- **Use Cases**: Application logic for each entity
-  - Files: `application/candidate_app.ex`, `application/job_app.ex`, `application/application_app.ex`
-- **Repositories**: In-memory, Agent-based
-  - Files: `infrastructure/candidate_repo.ex`, `infrastructure/job_repo.ex`, `infrastructure/application_repo.ex`
-- **Web Layer**: Phoenix controllers and router
-  - Files: `lti_gg_backend_web/controllers/`, `lti_gg_backend_web/router.ex`
-- **API Endpoints** (all under `/api`):
-  - `GET /jobs`, `POST /jobs`, `PATCH /jobs/:id/status`
-  - `GET /applications`, `POST /applications`, `PATCH /applications/:id/status`
-  - `GET /candidates`, `POST /candidates`, `PATCH /candidates/:id/status`
+### Nivel 1 - Contexto del Sistema
 
----
+```mermaid
+graph TB
+    subgraph "Actores"
+        RECRUITER[Reclutador]
+        CANDIDATE[Candidato]
+        HIRING_MANAGER[Hiring Manager]
+    end
 
-## 🖥️ Frontend Structure (Elm)
+    subgraph "Sistema LTI ATS"
+        LTI[LTI ATS Platform]
+    end
 
-- **Main SPA**: `frontend/src/Main.elm`
-  - Handles login, job/application listing, error handling
-- **Application Form**: `frontend/src/Application.elm`
-  - Handles application submission logic
-- **Styling**: `frontend/src/Styles.elm` (using `elm-css`)
-- **Tests**: `frontend/tests/` (TDD for all features)
+    subgraph "Sistemas Externos"
+        EMAIL_SYS[Sistema de Email]
+        AI_SYS[Servicios de IA Externa]
+        JOB_BOARDS[Job Boards - LinkedIn, Indeed]
+        CALENDAR_SYS[Sistema de Calendario]
+    end
 
----
+    RECRUITER --> LTI
+    CANDIDATE --> LTI
+    HIRING_MANAGER --> LTI
 
-## 🧪 TDD & Test Coverage
+    LTI --> EMAIL_SYS
+    LTI --> AI_SYS
+    LTI --> JOB_BOARDS
+    LTI --> CALENDAR_SYS
+```
 
-- **Backend**: All layers (domain, application, infrastructure, web) are fully tested (see `backend/test/`)
-  - Tests for entity logic, use cases, repo behavior, and API endpoints
-- **Frontend**: Elm tests for all fetch/update logic and UI flows (see `frontend/tests/`)
-- **Coverage**: ≥80% for all implemented code (see `backend/cover/` for HTML reports)
+### Nivel 2 - Contenedores
 
----
+```mermaid
+graph TB
+    subgraph "Cliente"
+        WEB_APP[Web Application<br/>React SPA]
+        MOBILE_APP[Mobile App<br/>React Native]
+    end
 
-## ⚡ Developer Experience (DX)
+    subgraph "LTI ATS Platform"
+        API_GATEWAY[API Gateway<br/>Kong]
+        CANDIDATE_SERVICE[Candidate Service<br/>Node.js/Express]
+        APPLICATION_SERVICE[Application Service<br/>Node.js/Express]
+        AI_SERVICE[AI Service<br/>Python/FastAPI]
+        NOTIFICATION_SERVICE[Notification Service<br/>Node.js/Express]
+    end
 
-- **Makefile**: Unified commands for setup, run, test, format, reset-db, build, and check
-- **Zero-config onboarding**: `make setup` installs all dependencies
-- **Fast feedback**: In-memory DB, instant test runs, no external services required
-- **Formatting**: Enforced for both Elixir and Elm
-- **Comprehensive Documentation**: Architecture, setup, testing, and compliance guides
+    subgraph "Datos"
+        CANDIDATE_DB[(Candidate Database<br/>PostgreSQL)]
+        FILE_STORAGE[(File Storage<br/>AWS S3)]
+        CACHE[(Cache<br/>Redis)]
+    end
 
----
+    WEB_APP --> API_GATEWAY
+    MOBILE_APP --> API_GATEWAY
 
-## 🚀 Getting Started
+    API_GATEWAY --> CANDIDATE_SERVICE
+    API_GATEWAY --> APPLICATION_SERVICE
+    API_GATEWAY --> AI_SERVICE
+    API_GATEWAY --> NOTIFICATION_SERVICE
 
-This system is designed for immediate execution with minimal setup.
+    CANDIDATE_SERVICE --> CANDIDATE_DB
+    CANDIDATE_SERVICE --> FILE_STORAGE
+    CANDIDATE_SERVICE --> CACHE
+    CANDIDATE_SERVICE --> AI_SERVICE
+    CANDIDATE_SERVICE --> NOTIFICATION_SERVICE
+```
 
-### Quick Start
+### Nivel 3 - Componentes del Candidate Service
 
-See **[RUN.md](./RUN.md)** for the fastest way to get the system running (under 2 minutes).
+```mermaid
+graph TB
+    subgraph "Candidate Service"
+        subgraph "Controllers"
+            CANDIDATE_CONTROLLER[Candidate Controller]
+            PROFILE_CONTROLLER[Profile Controller]
+            SEARCH_CONTROLLER[Search Controller]
+        end
 
-### Testing Guide
+        subgraph "Business Logic"
+            CANDIDATE_MANAGER[Candidate Manager]
+            CV_PARSER[CV Parser]
+            SCORING_ENGINE[Scoring Engine]
+            SEARCH_ENGINE[Search Engine]
+        end
 
-See **[TESTING.md](./TESTING.md)** for comprehensive testing documentation including unit tests, integration tests, and manual testing scenarios.
+        subgraph "Data Access"
+            CANDIDATE_REPO[Candidate Repository]
+            FILE_MANAGER[File Manager]
+            CACHE_MANAGER[Cache Manager]
+        end
 
-### Requirements Compliance
+        subgraph "External Adapters"
+            AI_ADAPTER[AI Service Adapter]
+            NOTIFICATION_ADAPTER[Notification Adapter]
+            STORAGE_ADAPTER[Storage Adapter]
+        end
+    end
 
-See **[COMPLIANCE.md](./COMPLIANCE.md)** for verification that this project meets 100% of the academic requirements plus delivers a working MVP.
+    CANDIDATE_CONTROLLER --> CANDIDATE_MANAGER
+    PROFILE_CONTROLLER --> CANDIDATE_MANAGER
+    SEARCH_CONTROLLER --> SEARCH_ENGINE
 
----
+    CANDIDATE_MANAGER --> CV_PARSER
+    CANDIDATE_MANAGER --> SCORING_ENGINE
+    CANDIDATE_MANAGER --> CANDIDATE_REPO
 
-## 📊 Quality Metrics (MVP)
+    CV_PARSER --> AI_ADAPTER
+    SCORING_ENGINE --> AI_ADAPTER
+    CANDIDATE_MANAGER --> NOTIFICATION_ADAPTER
 
-- **Test Coverage:** ≥80% for implemented layers
-- **Type Safety:** Elm + Elixir specs for implemented modules
-- **Performance:** <200ms API response time (in-memory)
-- **Reliability:** Zero runtime exceptions in tested flows
-- **Maintainability:** Clean Architecture for implemented features
+    CANDIDATE_REPO --> CACHE_MANAGER
+    FILE_MANAGER --> STORAGE_ADAPTER
+```
 
----
+### Nivel 4 - Código del CV Parser
 
-_Generated for LTI ATS MVP - A functional programming approach to modern recruitment technology._
+```typescript
+// CV Parser Component - Responsible for extracting structured data from CVs
+
+class CVParser {
+  private aiService: AIServiceAdapter;
+  private fileValidator: FileValidator;
+
+  async parseCV(fileBuffer: Buffer, fileName: string): Promise<ParsedCVData> {
+    // Validate file format and size
+    await this.fileValidator.validate(fileBuffer, fileName);
+
+    // Extract text from various formats (PDF, DOC, DOCX)
+    const extractedText = await this.extractText(fileBuffer, fileName);
+
+    // Use AI service to extract structured data
+    const structuredData = await this.aiService.extractCVData(extractedText);
+
+    // Validate and clean extracted data
+    const cleanedData = this.validateAndCleanData(structuredData);
+
+    return cleanedData;
+  }
+
+  private async extractText(buffer: Buffer, fileName: string): Promise<string> {
+    const extension = path.extname(fileName).toLowerCase();
+
+    switch (extension) {
+      case ".pdf":
+        return await this.extractFromPDF(buffer);
+      case ".doc":
+      case ".docx":
+        return await this.extractFromWord(buffer);
+      case ".txt":
+        return buffer.toString("utf-8");
+      default:
+        throw new UnsupportedFileFormatError(extension);
+    }
+  }
+
+  private validateAndCleanData(data: any): ParsedCVData {
+    return {
+      personalInfo: this.cleanPersonalInfo(data.personalInfo),
+      experience: this.cleanExperience(data.experience),
+      education: this.cleanEducation(data.education),
+      skills: this.cleanSkills(data.skills),
+      confidence: data.confidence || 0.0,
+    };
+  }
+}
+
+interface ParsedCVData {
+  personalInfo: {
+    name: string;
+    email: string;
+    phone?: string;
+    location?: string;
+    linkedIn?: string;
+  };
+  experience: WorkExperience[];
+  education: Education[];
+  skills: string[];
+  confidence: number;
+}
+```
+
+### Responsabilidades del Candidate Service
+
+1. **Gestión de Perfiles**: CRUD completo de información de candidatos
+2. **Parsing de CVs**: Extracción automática de datos estructurados
+3. **Scoring con IA**: Evaluación automática basada en requisitos del puesto
+4. **Búsqueda Avanzada**: Filtros complejos y búsqueda por similitud
+5. **Gestión de Archivos**: Upload, storage y versionado de documentos
+6. **Notificaciones**: Integración con sistema de notificaciones
+7. **Cache**: Optimización de consultas frecuentes
+8. **Auditoría**: Logging de todas las operaciones para compliance
