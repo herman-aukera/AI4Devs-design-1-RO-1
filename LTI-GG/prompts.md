@@ -386,216 +386,37 @@ Este ejercicio demostró la efectividad del uso de IA para:
 
 La metodología utilizada puede servir como marco de referencia para futuros ejercicios de diseño de sistemas utilizando asistentes de IA.
 
-### Code Review Checklist Prompt
+### Prompt para Validación del Diseño
 
 ```
 
-Create a comprehensive code review checklist for the LTI ATS:
+Revisa y valida el diseño completo de LTI-GG considerando:
 
-1. **Functional Programming Principles**:
+**Consistencia del Diseño**:
 
-   - Pure functions and immutability
-   - Type safety and error handling
-   - Function composition and modularity
+- Coherencia entre Lean Canvas y casos de uso
+- Alineación del modelo de datos con funcionalidades
+- Consistencia entre arquitectura y requisitos técnicos
 
-2. **Architecture Compliance**:
+**Viabilidad Técnica**:
 
-   - Clean Architecture layer separation
-   - Domain-driven design principles
-   - Dependency inversion compliance
+- Escalabilidad de la arquitectura propuesta
+- Factibilidad de las integraciones externas
+- Consideraciones de rendimiento y disponibilidad
 
-3. **Testing Quality**:
+**Completitud del Diseño**:
 
-   - Test coverage requirements
-   - Test clarity and maintainability
-   - Edge case coverage
+- Cobertura de todos los casos de uso en el modelo de datos
+- Suficiencia de los microservicios para las funcionalidades
+- Adequación del diagrama C4 para representar la complejidad
 
-4. **Documentation Standards**:
-   - API documentation completeness
-   - Code comment quality
-   - Architecture decision records
+**Propuesta de Mejoras**:
 
-Generate the checklist, review templates, and quality gates.
+- Optimizaciones arquitectónicas
+- Funcionalidades adicionales de valor
+- Consideraciones de experiencia de usuario
 
-```
-
-### Security Audit Prompt
-
-```
-
-Perform a security audit for the LTI ATS MVP:
-
-1. **Authentication & Authorization**:
-
-   - Secure session management
-   - Input validation and sanitization
-   - CORS and CSRF protection
-
-2. **Data Protection**:
-
-   - Sensitive data handling
-   - Encryption at rest and in transit
-   - Privacy compliance (GDPR)
-
-3. **Infrastructure Security**:
-
-   - Secure deployment practices
-   - Environment variable management
-   - Dependency vulnerability scanning
-
-4. **Monitoring & Incident Response**:
-   - Security event logging
-   - Intrusion detection
-   - Incident response procedures
-
-Generate security configuration, audit reports, and remediation plans.
-
-```
-
----
-
-## 🔄 Iteration and Refinement Prompts
-
-### Feature Enhancement Prompt
-
-```
-
-Enhance the LTI ATS MVP with advanced features:
-
-1. **AI-Powered Features**:
-
-   - Resume parsing and analysis
-   - Candidate scoring algorithms
-   - Interview question generation
-   - Bias detection and mitigation
-
-2. **Collaboration Features**:
-
-   - Real-time chat and comments
-   - Shared evaluation scorecards
-   - Team decision workflows
-   - Notification system
-
-3. **Analytics and Reporting**:
-
-   - Hiring pipeline analytics
-   - Performance dashboards
-   - Custom report generation
-   - Data export capabilities
-
-4. **Integration Capabilities**:
-   - Job board integrations
-   - Calendar system integration
-   - Email automation
-   - Slack/Teams notifications
-
-Prioritize features and implement incrementally with tests.
-
-```
-
-### Deployment and DevOps Prompt
-
-```
-
-Set up production deployment for the LTI ATS:
-
-1. **Containerization**:
-
-   - Docker configurations for Elixir and Elm
-   - Multi-stage builds for optimization
-   - Docker Compose for local development
-
-2. **Cloud Deployment**:
-
-   - Platform selection (Fly.io, Railway, or Heroku)
-   - Environment configuration
-   - Scaling strategies
-   - Backup and recovery
-
-3. **Monitoring and Observability**:
-
-   - Application performance monitoring
-   - Log aggregation and analysis
-   - Health checks and alerting
-   - Error tracking and debugging
-
-4. **Security and Compliance**:
-   - SSL/TLS configuration
-   - Environment secrets management
-   - Compliance documentation
-   - Security scanning and updates
-
-Generate deployment configurations, monitoring setup, and operational runbooks.
-
-```
-
----
-
-## 📝 Documentation Generation Prompts
-
-### API Documentation Prompt
-
-```
-
-Generate comprehensive API documentation for the LTI ATS:
-
-1. **OpenAPI Specification**:
-
-   - Complete API endpoint documentation
-   - Request/response schemas
-   - Authentication requirements
-   - Error response formats
-
-2. **Integration Guide**:
-
-   - Client library examples
-   - Common integration patterns
-   - Troubleshooting guide
-   - Rate limiting and best practices
-
-3. **Developer Resources**:
-   - Getting started tutorial
-   - Code examples in multiple languages
-   - Postman/Insomnia collections
-   - SDK documentation
-
-Generate interactive documentation with examples and testing capabilities.
-
-```
-
-### User Manual Prompt
-
-```
-
-Create a comprehensive user manual for the LTI ATS:
-
-1. **User Roles and Permissions**:
-
-   - Role-based feature access
-   - Permission management
-   - User onboarding workflows
-
-2. **Feature Guides**:
-
-   - Step-by-step tutorials
-   - Best practices and tips
-   - Common workflows
-   - Troubleshooting FAQ
-
-3. **Administrative Guide**:
-
-   - System configuration
-   - User management
-   - Data management
-   - Integration setup
-
-4. **Training Materials**:
-   - Video tutorials
-   - Interactive demos
-   - Certification programs
-   - Community resources
-
-Generate user-friendly documentation with screenshots and examples.
+Genera un reporte de validación con recomendaciones específicas.
 
 ```
 
