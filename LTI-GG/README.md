@@ -6,16 +6,19 @@ A fully functional MVP built with Elm frontend and Elixir backend, demonstrating
 
 **Want to run the system immediately?** → **[RUN.md](./RUN.md)**
 
+**Want to test the three main use cases?** → **[FINAL_SYSTEM_GUIDE.md](./FINAL_SYSTEM_GUIDE.md)**
+
 Get up and running in under 2 minutes with the quick start guide.
 
 ## 📖 Documentation
 
-| Document                             | Purpose                                                  |
-| ------------------------------------ | -------------------------------------------------------- |
-| **[LTI-GG.md](./LTI-GG.md)**         | Complete system architecture, design, and business model |
-| **[RUN.md](./RUN.md)**               | Quick setup and execution guide                          |
-| **[TESTING.md](./TESTING.md)**       | Comprehensive testing documentation                      |
-| **[COMPLIANCE.md](./COMPLIANCE.md)** | Requirements fulfillment verification                    |
+| Document                                         | Purpose                                                  |
+| ------------------------------------------------ | -------------------------------------------------------- |
+| **[LTI-GG.md](./LTI-GG.md)**                     | Complete system architecture, design, and business model |
+| **[RUN.md](./RUN.md)**                           | Quick setup and execution guide                          |
+| **[FINAL_SYSTEM_GUIDE.md](./FINAL_SYSTEM_GUIDE.md)** | How to test the three main use cases                |
+| **[TESTING.md](./TESTING.md)**                   | Comprehensive testing documentation                      |
+| **[COMPLIANCE.md](./COMPLIANCE.md)**             | Requirements fulfillment verification                    |
 
 ## ✨ What's Included
 
